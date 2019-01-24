@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: String,
-  password: String
+
+// USER MODEL
+
+const userSchema = new Schema ({
+  username: { type: String, required: true },
+  password: String,
+  avatarUrl: { type: String, default: 'images/default-avatar.png' },
+  label: String,
+  artistsFollowed: [ { type : Schema.Types.ObjectId, ref: 'Artist' } ]
 }, {
   timestamps: {
     createdAt: 'created_at',
