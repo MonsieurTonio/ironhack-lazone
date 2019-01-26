@@ -24,16 +24,19 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const company = req.body.company;
+  const email = req.body.email;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  if (email === "" || password === "") {
+    res.render("auth/signup", { message: "Indicate email and password" });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render("auth/signup", { message: "The email already exists" });
       return;
     }
 
@@ -41,13 +44,18 @@ router.post("/signup", (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
-      username,
+      firstName,
+      lastName,
+      company,
+      email,
       password: hashPass
     });
 
     newUser.save()
+
     .then(() => {
-      res.redirect("/");
+      console.log("dashboard ok")
+      res.redirect("/dashboard");
     })
     .catch(err => {
       res.render("auth/signup", { message: "Something went wrong" });

@@ -5,10 +5,12 @@ const Schema   = mongoose.Schema;
 // USER MODEL
 
 const userSchema = new Schema ({
-  username: { type: String, required: true },
-  password: String,
+  firstName : { type: String, required: true },
+  lastName : { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
   avatarUrl: { type: String, default: 'images/default-avatar.png' },
-  label: String,
+  company: { type: String, required: true },
   artistsFollowed: [ { type : Schema.Types.ObjectId, ref: 'Artist' } ]
 }, {
   timestamps: {

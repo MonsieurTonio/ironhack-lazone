@@ -15,7 +15,7 @@ const flash      = require("connect-flash");
     
 
 mongoose
-  .connect('mongodb://localhost/ironhack-lazone', {useNewUrlParser: true})
+  .connect('mongodb://localhost/ironhack-zone', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -61,7 +61,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   
 
 // default value for title local
-app.locals.title = 'La Zone';
+app.locals.title = 'Zone.';
 
 
 // Enable authentication using session + passport
