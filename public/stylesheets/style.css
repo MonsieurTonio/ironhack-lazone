@@ -89,4 +89,14 @@ label {
   text-transform: uppercase;
   color: lightgrey; }
 
+.nav-link {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF; }
+
 /*# sourceMappingURL=style.css.map */
