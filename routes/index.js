@@ -10,9 +10,7 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.get('/dashboard', (req, res, next) => {
-  res.render('dashboard');
-});
+
 
 router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 
