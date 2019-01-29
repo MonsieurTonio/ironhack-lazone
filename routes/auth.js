@@ -64,6 +64,7 @@ router.post("/signup", (req, res, next) => {
     });
 
     newUser.save()
+
     .then(() => {
       console.log("dashboard ok")
       res.redirect("/dashboard");
