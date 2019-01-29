@@ -9,6 +9,7 @@ const userSchema = new Schema ({
   lastName : { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  confirmationCode : String,
   avatarUrl: { type: String, default: 'images/default-avatar.png' },
   company: { type: String, required: true },
   artistsFollowed: [ { type : Schema.Types.ObjectId, ref: 'Artist' } ]
