@@ -75,7 +75,7 @@ router.post("/signup", (req, res, next) => {
     });
 
 
-    const confirmationUrl = `http://localhost:3000/auth/confirm/${token}`
+    const confirmationUrl = `http://localhost:3000/confirm/${token}`
 
     newUser.save()
 
@@ -92,7 +92,7 @@ router.post("/signup", (req, res, next) => {
 
         console.log('confirmation email sent', email)
 
-        res.redirect("/dashboard"); // il faudrait renvoyer vers une page "confirme ton mail"
+        res.redirect("/login"); // il faudrait renvoyer vers une page "confirme ton mail"
       })
       .catch(err => {
         res.render("auth/signup", { message: "Something went wrong" });
@@ -104,7 +104,7 @@ router.post("/signup", (req, res, next) => {
 router.get("/confirm/:confirmationCode", (req, res, next) => {
   User.findOne({confirmationCode: req.params.confirmationCode }, (err, user) => {
     if (user) {
-      res.render("auth/confirmation", { message: `Email ${user.email} is been successfully verified` });
+      res.render("auth/confirmation", { user: user });
     console.log("email is verified");
   } else {
     console.log("email is not verified");
