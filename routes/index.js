@@ -14,7 +14,9 @@ router.get('/', (req, res, next) => {
 
 router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 
-    User.findById("5c4c7b50e36d9013b2fec8b0",function(err,user){
+  console.log('coucouu')
+
+    User.findById(req.user._id,function(err,user){
       if (err) return next(err);
 
       console.log('user', user)
