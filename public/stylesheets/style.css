@@ -30,6 +30,23 @@ h3 {
   height: 48px;
   margin-top: 50px; }
 
+.profilePic {
+  position: absolute;
+  right: 100%;
+  top: 0;
+  margin-right: 70px;
+  width: 128px;
+  height: 128px;
+  margin-top: 50px;
+  border-radius: 100px;
+  border-color: linear-gradient(90deg, #F27A54 0%, #A154F2 100%); }
+
+.account-message {
+  font-family: 'Zilla slab', serif;
+  color: #FFFFFF;
+  font-size: 18px;
+  margin-top: 20px; }
+
 .account-message :link {
   color: white; }
 
@@ -59,7 +76,9 @@ label {
   margin: 0 auto; }
 
 .champsinput input {
-  display: block; }
+  display: block;
+  font-size: 14px;
+  font-family: 'Zilla slab', serif; }
 
 .champsinput label {
   display: block; }
@@ -69,7 +88,7 @@ label {
   height: 40px;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
-  border-color: transparent;
+  border-color: white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;

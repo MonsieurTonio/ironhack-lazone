@@ -90,7 +90,7 @@ router.post("/signup", (req, res, next) => {
           html: `Sisi La Zone. Confirme ton lourd mail : <a href="${confirmationUrl}">Cliquer ici<a>`
         })
 
-        console.log('confiramtion email sent', email)
+        console.log('confirmation email sent', email)
 
         res.redirect("/dashboard"); // il faudrait renvoyer vers une page "confirme ton mail"
       })

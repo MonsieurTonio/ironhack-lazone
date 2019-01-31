@@ -13,21 +13,21 @@
 
   <div class="champsinput">
     <form action="/auth/login" method="POST" id="formContainer">
-      
+
       <label for="username">Email</label>
       <input class="inputbox" id="email" type="text" name="email" placeholder="@">
       <br>
       <label for="password">Password</label>
       <input class="inputbox" id="password" type="password" name="password" placeholder="Your password">
-        <br style="clear:both;" /> {{#if message }}
+      <br style="clear:both;" /> {{#if message }}
       <div class="error-message">{{ message }}</div>
       {{/if}}
 
       <br>
       <br>
-  
+
 
       <button class="loginButton">Login</button>
+    </form>
   </div>
-  </form>
 </body>
