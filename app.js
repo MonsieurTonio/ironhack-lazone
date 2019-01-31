@@ -83,6 +83,9 @@ app.use('/', authRoutes);
 
 const dashboardRoutes = require('./routes/dashboard');
 app.use('/dashboard', dashboardRoutes);
+
+// const confirmationRoutes = require('./routes/confirmation');
+// app.use('/dashboard', confirmationRoutes);
       
 
 module.exports = app;
