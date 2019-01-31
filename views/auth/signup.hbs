@@ -1,39 +1,47 @@
-<h2>Signup</h2>
+<body>
+  <div class="authblock">
+    <img src="/images/Zonelogo.png" class="zonelogin">
+    <div class="authtitle">
+      <h2>Get Started <br> with a free account.</h2>
+    </div>
+  </div>
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="firstName">First Name</label>
-  <input id="firstName" type="text" name="firstName" placeholder="Your first name">
+<div class="champsinput">
+  <form action="/auth/signup" method="POST" id="form-container">
+    <label for="firstName">First Name</label>
+    <input class="inputbox" id="firstName" type="text" name="firstName" placeholder="Your first name">
 
-  <br><br>
+    <br>
 
-  <label for="lastName">Last Name</label>
-  <input id="lastName" type="text" name="lastName" placeholder="Your last name">
 
-  <br><br>
+    <label for="lastName">Last Name</label>
+    <input class="inputbox" id="lastName" type="text" name="lastName" placeholder="Your last name">
 
-  <label for="company">Your Company</label>
-  <input id="company" type="text" name="company" placeholder="Your company name">
+    <br>
 
-  <br><br>
-  
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="Your email">
+    <label for="company">Your Company</label>
+    <input class="inputbox" id="company" type="text" name="company" placeholder="Your company name">
 
-  <br><br>
+    <br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
+    <label for="email">Email</label>
+    <input class="inputbox" id="email" type="text" name="email" placeholder="@">
+
+    <br>
+
+    <label for="password">Password</label>
+    <input class="inputbox" id="password" type="password" name="password" placeholder="Your password">
+    <br style="clear:both;"> {{#if message }}
     <div class="error-message">{{ message }}</div>
-  {{/if}}
+    {{/if}}
 
-  <br><br>
+    <br>
 
-  <button>Create account</button>
+    <button class="loginButton">Create account</button>
 
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+    <p class="account-message">
+      Do you already have an account?
+      <a href="/login">Login</a>
+    </p>
+  </form>
+</div>

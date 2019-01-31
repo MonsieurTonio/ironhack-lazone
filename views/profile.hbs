@@ -1,36 +1,44 @@
-<h2>My profile</h2>
+<body>
+<div class="authblock">
+    <img src="{{#if user.avatarUrl}}{{user.avatarUrl}}{{else}}/images/profile.png{{/if}}" height="50" width="50" class="profilePic">
+    <div class="authtitle">
+      <h2>My profile</h2>
+    </div>
+    <br>
+    <br>
+</div>
 
-<img src="/images/profile.png" height="50" width="50">
 
-  <br><br>
+    <div class="champsinput">
+      <form action="/profile" method="POST" id="form-picture-container" enctype="multipart/form-data">
 
-<form action="/profile" method="POST" id="form-container">
+        <label for="picture">Uplodad a new picture</label>
+        <input id="picture" type="file" name="photo" placeholder="Your picture">
+        <br>
 
-  <label for="picture">Uplodad a new picture</label>
-  <input id="picture" type="file" name="myPicture" placeholder="Your picture">
-
-  <br><br>
-
-  <label for="firstName">First Name</label>
-  <input id="firstName" type="text" name="firstName" placeholder="Your first name">
-
-  <br><br>
-
-  <label for="lastName">Last Name</label>
-  <input id="lastName" type="text" name="lastName" placeholder="Your last name">
-
-  <br><br>
-
-  <label for="company">Company</label>
-  <input id="company" type="text" name="company" placeholder="Your company name">
-
-  <br><br>
-  
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="Your email">
+        <label for="firstName">First Name</label>
+        <input class="inputbox" id="firstName" type="text" name="firstName" placeholder="Your first name">
 
   <br><br>
 
-</form>
+        <br>
 
+        <label for="lastName">Last Name</label>
+        <input class="inputbox" id="lastName" type="text" name="lastName" placeholder="Your last name">
 
+        <br>
+
+        <label for="company">Company</label>
+        <input class="inputbox" id="company" type="text" name="company" placeholder="Your company name">
+
+        <br>
+
+        <label for="email">Email</label>
+        <input class="inputbox" id="email" type="text" name="email" placeholder="Your email">
+
+        <br>
+
+        <button type="submit" value="Submit" class="loginButton">Save changes</button>
+      </form>
+
+</body>

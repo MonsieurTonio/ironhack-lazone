@@ -1,25 +1,33 @@
+<body>
+  <div class="authblock">
+    <img src="/images/Zonelogo.png" class="zonelogin">
+    <div class="authtitle">
+      <h2>Login.</h2>
+      <h3 class="account-message">
+        Don't have an account yet?
+        <a href="/auth/signup">Create your account</a>
+        </>
+      </h3>
+    </div>
+  </div>
 
-<h2>Login</h2>
+  <div class="champsinput">
+    <form action="/auth/login" method="POST" id="formContainer">
 
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+      <label for="username">Email</label>
+      <input class="inputbox" id="email" type="text" name="email" placeholder="@">
+      <br>
+      <label for="password">Password</label>
+      <input class="inputbox" id="password" type="password" name="password" placeholder="Your password">
+      <br style="clear:both;" /> {{#if message }}
+      <div class="error-message">{{ message }}</div>
+      {{/if}}
 
-  <br><br>
+      <br>
+      <br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
 
-  <br><br>
-
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+      <button class="loginButton">Login</button>
+    </form>
+  </div>
+</body>
