@@ -20,11 +20,14 @@ let transporter = nodemailer.createTransport({
 
 // LOGIN ROUTE
 router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+  let data = {
+    layout: false
+  }
+  res.render("auth/login", { "message": req.flash("error") , layout:false});
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/dashboard",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
@@ -33,7 +36,10 @@ router.post("/login", passport.authenticate("local", {
 
 // SIGNUP ROUTE
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  let data = {
+    layout: false
+  }
+  res.render("auth/signup", data);
 });
 
 router.post("/signup", (req, res, next) => {
