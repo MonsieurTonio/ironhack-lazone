@@ -26,7 +26,7 @@ router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 });
 
 router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('photo'), (req, res, next) => {
-  console.log('coucpu', req.file.url) 
+  console.log('coucou', req.file.url) 
 
   User.findById("5c4c7b50e36d9013b2fec8b0",function(err,user){
     if (err) return next(err);
