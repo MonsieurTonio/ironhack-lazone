@@ -1,0 +1,22 @@
+<p>Welcome {{user.firstName}}, this is your dashboard</p>
+
+<<<<<<< HEAD
+<div class="searchbar">
+    <form>
+        <input class = "inputsearchbar" type="text" placeholder="TYPE YOUR ARTIST HERE">
+    </form>
+</div>
+
+<button class="searchButton">FOLLOW THIS ARTIST</button>
+
+=======
+<form action="/dashboard" method="POST">
+Artist:<br>
+ <input type="text" name="artist"><br>
+ <button type="submit">Search for an artist</button>
+</form>
+
+{{#each artists}}
+{{name}}
+{{/each}}
+>>>>>>> e4abbc97c443a4dbf8f6e1d9a1082ea9d83acbca
