@@ -132,3 +132,7 @@ label {
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF; }
+
+.dashboard-layout {
+  margin-left: 500px;
+}
