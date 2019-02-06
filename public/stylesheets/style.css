@@ -118,21 +118,9 @@ label {
   text-transform: uppercase;
   color: #FFFFFF; }
 
-.searchbar {
-  margin-left: 250px;
-  }
-
-.inputsearchbar {
-  width: 250px;
-  height: 100px;
-  background-color: lightgrey;
-  color: #F27A54
-  }
-
 .searchButton {
   width: 200px;
   height: 40px;
-  margin-left: 100px;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
   border-color: white;

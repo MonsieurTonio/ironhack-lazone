@@ -1,10 +1,11 @@
 <p>Welcome {{user.firstName}}, this is your dashboard</p>
 
-<div class="searchbar">
-    <form>
-        <input class = "inputsearchbar" type="text" placeholder="TYPE YOUR ARTIST HERE">
+<div class="dashboard-layout">
+    <form action="/dashboard" method="POST">
+        <input class="inputsearchbar" type="text" placeholder="TYPE YOUR ARTIST HERE">
+            {{#each artists}}
+            {{name}}
+            {{/each}}
+        <button type="submit" value="Submit" class="searchButton">FOLLOW THIS ARTIST</button>
     </form>
 </div>
-
-<button class="searchButton">FOLLOW THIS ARTIST</button>
-
