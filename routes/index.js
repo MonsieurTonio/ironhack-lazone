@@ -4,12 +4,13 @@ const router  = express.Router();
 const uploadCloud = require('../config/cloudinary.js');
 const ensureLogin = require("connect-ensure-login");
 const User = require('../models/User.js');
+const spotifyApi = require('spotify-web-api-node');
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
 });
-
 
 
 router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
