@@ -1,3 +1,55 @@
-<div class="container">
-  <button class="btn">Button</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body class="homepage-body">
+
+  {{!-- <img src="/images/concert.jpeg" class="homepage-picture" width="1440 px"> --}}
+  <div class="head">
+  </div>
+
+  <div class="homepage-container">
+    <div>
+      <h2 class="homepage-title">Discover the upcoming <br> music talents.</h2>
+      <h3 class="homepage-text">Social and plateform data in one place</h1>
+      {{!-- <button class="trendingnowbutton"> #Trendingnow </button> --}}
+    </div>
+    <div class="best-artist">
+      {{!-- affichage des 3 meilleurs artistes --}}
+      </div>
+      <button class="createAccount"> Create your account </button>
+    </div>
+  </div>
+
+  <footer class="footerbar navbar-expand-lg" style="background-color:#3C444C;">
+    <a class="navbar-brand" href="/">
+      <img src="/images/Zonelogo.png" width="168" height="57" class="footer-logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="footer-menu">
+   {{!--      <ul class="footer-text-style">
+          <li><a class="nav-link active " href="/dashboard">Home</a></li>
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/">About</a></li>
+          <li><a class="nav-link" href="/">Contact</a></li>
+        </ul> --}}
+           <div class="footer-text-style">
+          <a class="footer-link active" href="/dashboard">Home</a>
+          <a class="footer-link" href="/">Work</a>
+          <a class="footer-link" href="/">About</a>
+          <a class="footer-link" href="/">Contact</a>
+        </div>
+    </div>
+  </footer>
+
+</body>
+</html>

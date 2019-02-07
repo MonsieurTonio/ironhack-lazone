@@ -5,6 +5,7 @@ body {
   background: #474F5A;
 }
 
+
 h2 {
   font-size: 54px;
   font-weight:lighter;
@@ -13,6 +14,12 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight:lighter;
+}
+
+h4{
+  font-size: 30px;
+  font-weight:lighter;
+  color: #FFFFFF;
 }
 
 .authblock{
@@ -142,4 +149,85 @@ label{
   color: #FFFFFF;
 }
 
+.homepage-body{
+  background-image: url("../images/concert.jpeg");
+  background-size: cover;
+}
+.homepage-title{
+  color: #FFFFFF
+}
+
+.homepage-text{
+  color: #FFFFFF;
+  margin: 40px 0;
+}
+
+.homepage-container{
+  position: relative;
+  top: 100px;
+  left: 100px;
+}
+ 
+/* .trendingnowbutton{
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  border-radius: 20px;
+  border-color:white;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+ */
+.createAccount{
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  border-radius: 20px;
+  border-color:white;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  position: relative;
+  left: 800px;
+  top: 100px;
+}
+
+.footerbar{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer-logo{
+  position: relative;
+  left: 625px;
+  margin: 23px 0
+}
+
+.footer-text-style{
+  // list-style-type: none;
+  display: block;
+}
+
+.footer-link{
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
 

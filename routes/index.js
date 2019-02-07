@@ -6,9 +6,12 @@ const ensureLogin = require("connect-ensure-login");
 const User = require('../models/User.js');
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-  res.render('index');
+router.get("/", (req, res, next) => {
+  res.render("index", {
+    logged: !!req.user
+  });
 });
+
 
 
 
