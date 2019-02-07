@@ -30,15 +30,16 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-console.log(req.body.artist)
-spotifyApi.searchArtists(req.body.artist)
-.then(data => {
-          res.render('dashboard',{artists:data.body.artists.items});
-       })
-       .catch(err => {
-         console.log("error");
-       })
-      })
+  console.log(req.body.artist)
+  spotifyApi.searchArtists(req.body.artist,{ limit: 5})
+  .then(data => {
+            res.render('dashboard',{artists:data.body.artists.items});
+            console.log(data);
+        })
+        .catch(err => {
+          console.log("error");
+        })
+    })
 
 
 module.exports = router;

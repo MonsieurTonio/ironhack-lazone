@@ -2,10 +2,15 @@
 
 <div class="dashboard-layout">
     <form action="/dashboard" method="POST">
-        <input class="inputsearchbar" type="text" placeholder="TYPE YOUR ARTIST HERE">
-            {{#each artists}}
-            {{name}}
-            {{/each}}
+        <input class="inputsearchbar" type="text" name="artist">   
         <button type="submit" value="Submit" class="searchButton">FOLLOW THIS ARTIST</button>
     </form>
+
+     <ul>
+        {{#each artists}}
+            <li class="inputbox list" id="selectArtist">{{name}}</li>
+        {{/each}}
+    </ul>
+
+
 </div>
