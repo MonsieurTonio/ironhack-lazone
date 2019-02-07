@@ -1,4 +1,4 @@
-const express = require('express');
+  const express = require('express');
 const multer  = require('multer');
 const router  = express.Router();
 const uploadCloud = require('../config/cloudinary.js');
@@ -15,9 +15,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 
-  console.log('coucouu')
-
     User.findById(req.user._id,function(err,user){
+    
       if (err) return next(err);
 
       console.log('user', user)
@@ -29,15 +28,35 @@ router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 });
 
 router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('photo'), (req, res, next) => {
-  console.log('coucou', req.file.url) 
 
-  User.findById("5c4c7b50e36d9013b2fec8b0",function(err,user){
+  User.findById(req.user._id,function(err,user){
     if (err) return next(err);
-    user.avatarUrl = req.file.url
-    user.save(function(err,user){
+
+    if (req.file) {
+      user.avatarUrl = req.file.url;
+    }
+
+    if (user.firstName){
+      user.firstName = req.body.firstName;
+    }
+
+    if (user.lastName){
+      user.lastName = req.body.lastName;
+    }
+
+    if (user.company){
+      user.company = req.body.company;
+    }
+
+    if (user.email){
+      user.email = req.body.email;
+    }
+
+    user.save(function(err, user){
       if (err) return next(err);
-      res.send('update ok')
+      res.render('profile');
     });
+
 
   });
   

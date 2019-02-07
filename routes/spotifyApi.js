@@ -27,7 +27,7 @@ spotifyApi.clientCredentialsGrant()
     // spotifyApi.getArtist(req.query.artist)
     spotifyApi.getArtist("2HALYSe657tNJ1iKVXP2xA")
        .then(data => {
-          res.render('dashboard',{artists:data.body.artists.items});
+          //res.render('dashboard',{artists:data.body.artists.items});
            console.log(data);
        })
        .catch(err => {
