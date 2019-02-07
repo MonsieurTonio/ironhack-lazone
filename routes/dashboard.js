@@ -26,41 +26,43 @@ spotifyApi.clientCredentialsGrant()
 router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   console.log('hey');
 
-  //ICI rajouter les artistes déjà saved dans ma database
 
-  User.find(req.user._id)
-    .catch(err => next(err))
-    .then((dbartists) => {
+
+  // User.findById(req.user._id) ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
+  //   .catch(err => next(err))
+  //   .then((user) => {
+
+  //   })
+  // ;
       
+
+  // ICI rajouter les artistes déjà saved dans ma database
+
+    let dbartists = req.user.artistsFollowed
+
+    if (req.query.artist) {
+      spotifyApi.searchArtists(req.query.artist)
+        .catch(err => {
+          return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+        })  
+        .then((data) => {
+          res.render('dashboard', {
+            artistsfound: data.body.artists.items,
+            queryname: req.query.artist,
+            myartists: dbartists
+          });
+        })
+      ;
+    } else {
+      res.render('dashboard', {
+        myartists: dbartists
+      });
+    }
+
+
   })
 
   // })
-
-  // let dbartists = [];
-
-  if (req.query.artist) {
-    spotifyApi.searchArtists(req.query.artist)
-      .catch(err => {
-        return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-      })  
-      .then((data) => {
-        res.render('dashboard', {
-          artistsfound: data.body.artists.items,
-          queryname: req.query.artist,
-          myartists: dbartists
-        });
-      })
-    ;
-      
-  } else {
-    res.render('dashboard', {
-      myartists: dbartists
-    });
-  }
-});
-
-
-
 
 
 
