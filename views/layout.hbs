@@ -26,23 +26,17 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
         {{#if user}}
-          <a class="nav-item nav-link active " href="/dashboard">Home
+        <a class="nav-item nav-link active " href="/dashboard">Home
           <span class="sr-only">(current)</span>
         </a>
         <a class="nav-item nav-link" href="/profile">Profile</a>
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="nav-item avatar">
-          <a class="nav-link p-0" href="/profile">
-            <img src="/images/default-avatar.png" class="rounded-circle z-depth-0" alt="avatar image" height="35">
-          </a>
-          <a class="nav-item nav-link" href="/profile">{{user.firstName}}</a>
-          <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item avatar">
-             <a class="nav-link p-0" href="/profile">
-               <img src="{{#if user.avatarUrl}}{{user.avatarUrl}}{{else}}/images/profile.png{{/if}}" class="rounded-circle z-depth-0" alt="avatar image" height="35">
-             </a>
-           </li>
-          </ul>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item avatar">
+            <a class="nav-link p-0" href="/profile">
+              <img src="{{#if user.avatarUrl}}{{user.avatarUrl}}{{else}}/images/profile.png{{/if}}" class="rounded-circle z-depth-0" alt="avatar image" height="35">
+            </a>
+          </li>
+        </ul>
         {{else}}
           <a class="nav-item nav-link logHomeButton active " href="/login"> Log In </a>
           <a class="nav-item nav-link signUpButton " href="/signup">Sign Up</a>
