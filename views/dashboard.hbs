@@ -1,13 +1,12 @@
-<p>Welcome {{user.firstName}}, this is your dashboard</p>
+{{!-- <p>Welcome {{user.firstName}}, this is your dashboard</p> --}}
 
 
 
-{{! Frmaulaire de recherche d'artistes dans l'API }}
+{{! Formulaire de recherche d'artistes dans l'API }}
 
-<form action="/dashboard" method="GET">
-Artist:<br>
- <input  class= "type-artist-name"  type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE"><br>
- <button class= "search-button" type="submit">Search</button>
+<form class="artist-form" action="/dashboard" method="GET">
+  <input class="type-artist-name" type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE">
+  <button class="search-button" type="submit">Search</button>
 </form>
 
 
@@ -27,7 +26,97 @@ Artist:<br>
 
 
 
-{{! Artists que je follow déjà }}
-<ul>
-  liste de mes artistes TODO
-</ul>
+{{! ----------- Artists que je follow déjà ----------- }}
+
+{{!-- <ul>
+  {{#each artistFollowed}}
+  {{>artistCards name="{{name}}"}}
+  {{else}}
+  <p>No artist yet!</p>
+  {{/each}}
+</ul> --}}
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th class="spotify-followers table-item">Spotify <br> followers</th>
+      <th class="spotify-popularity table-item">Spotify <br> popularity score</th>
+      <th class="spotify-listeners table-item">Listeners <br> last month</th>
+      <th class="deezer-followers table-item">Deezer <br> followers</th>
+      <th class="deezer-popularity table-item">Deezer <br> popularity score</th>
+      </div>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="artist-column">
+          <div class="artist-pic-container "><img class="artist-pic" src="/images/default-avatar.png">
+          </div>
+          <div class="artist-info-container">
+            <div class="artist-name">Drake</div>
+            <div class="genre-name">Hip Hop</div>
+          </div>
+        </div>
+      </td>
+      <td>127.978</td>
+      <td>51/100</td>
+      <td>1.256</td>
+      <td>456</td>
+      <td>23/100</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="artist-column">
+          <div class="artist-pic-container" ><img class="artist-pic" src="/images/default-avatar.png">
+          </div>
+          <div class="artist-info-container">
+            <div class="artist-name">Jul</div>
+            <div class="genre-name">Rap inconscient</div>
+          </div>
+        </div>
+      </td>
+      <td>12.978</td>
+      <td>43/100</td>
+      <td>236</td>
+      <td>32</td>
+      <td>127/100</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="artist-column">
+          <div class="artist-pic-container"><img class="artist-pic" src="/images/default-avatar.png">
+          </div>
+          <div class="artist-info-container">
+            <div class="artist-name">Inspecteur Gadget</div>
+            <div class="genre-name">Gilet Jaune</div>
+          </div>
+        </div>
+      </td>
+      <td>12.978</td>
+      <td>43/100</td>
+      <td>236</td>
+      <td>32</td>
+      <td>127/100</td>
+    </tr>
+    <tr>
+      <td>
+          <div class="artist-column">
+            <div class="artist-pic-container"><img class="artist-pic" src="/images/default-avatar.png">
+            </div>
+          <div class="artist-info-container">
+            <div class="artist-name">La Compagnie Créole</div>
+            <div class="genre-name">Toujours là</div>
+          </div>
+        </div>
+      </td>
+      <td>12.978</td>
+      <td>43/100</td>
+      <td>236</td>
+      <td>32</td>
+      <td>127/100</td>
+    </tr>
+  </tbody>
+</table>
