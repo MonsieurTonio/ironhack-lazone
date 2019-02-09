@@ -65,32 +65,41 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-  spotifyApi.getArtist(req.body.artistid)
-  spotifyApi.getArtist(req.body.artistid)
-    .catch(err => {
-      return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-    })
-    .then((data) => {
-      console.log(data.body.name);
-      var newArtist = new Artist({
-        artistName: data.body.name,
-        spotifyAccountId: data.body.id,
-        genre: data.body.genres,
-        album: data.body.albums,
-        datas: [data.body.followers]
+
+      Artist.findOne({spotifyAccountId: req.body.artistid})
+      .then((artist) => {
+          if (!artist) {
+            spotifyApi.getArtist(req.body.artistid)
+              .catch(err => {
+                return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+              })
+              .then((data) => {
+                console.log(data.body.name);
+                var newArtist = new Artist({
+                  artistName: data.body.name,
+                  spotifyAccountId: data.body.id,
+                  genre: data.body.genres,
+                  album: data.body.albums,
+                  datas: [data.body.followers]
+                })
+
+                newArtist.save(function (err) {
+                  if (err) {
+                    throw err;
+                  } else {
+                    console.log('Save artist successfully!');
+                  }
+                })
+                res.render('dashboard') // on envoie le dashboard pour répondre à la requête
+              })
+          }
+          else {
+            console.log('You are already following this artist');
+            res.render('dashboard')
+
+          }
       })
-
-      newArtist.save(function (err) {
-        if (err) {
-          throw err;
-        } else {
-          console.log('Save artist successfully!');
-        }
-      })
     })
-
-      res.render('dashboard') // on envoie le dashboard pour répondre à la requête
-  });
-
+  
 
 module.exports = router;
