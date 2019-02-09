@@ -12,6 +12,11 @@ const dataSchema = new Schema ({
   youtubeFlws: Number,
   spotifyPopularityScore: Number,
   deezerPopularityScore: Number,
+},{
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 });
 
 const Datas = mongoose.model('Datas', dataSchema);
@@ -25,7 +30,7 @@ const artistSchema = new Schema ({
   spotifyAccountId: String,
   genre: String,
   album: [String],
-  label: String,
+  image: String,
   datas: [dataSchema]
 
 }, {

@@ -80,22 +80,30 @@ router.post('/', (req, res, next) => {
                   spotifyAccountId: data.body.id,
                   genre: data.body.genres,
                   album: data.body.albums,
-                  datas: [data.body.followers]
+                  image:data.body.images[0].url,
+                  datas: [
+                    {
+                      spotifyFlws: data.body.followers.total,
+                      spotifyPopularityScore: data.body.popularity
+                    }
+                  ]
                 })
 
                 newArtist.save(function (err) {
                   if (err) {
-                    throw err;
+                    return next(err);
                   } else {
                     console.log('Save artist successfully!');
                   }
                 })
-                res.render('dashboard') // on envoie le dashboard pour répondre à la requête
+                res.render('dashboard') //on envoie le dashboard pour répondre à la requête
               })
+            
+            
+
           }
           else {
-            console.log('You are already following this artist');
-            res.render('dashboard')
+            res.render('dashboard', {message: 'You are already following this artist'})
 
           }
       })
