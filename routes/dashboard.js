@@ -59,9 +59,6 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 })
 
-// })
-
-
 
 router.post('/', (req, res, next) => {
 
@@ -70,12 +67,12 @@ router.post('/', (req, res, next) => {
     })
     .then((artist) => {
       if (!artist) {
-        spotifyApi.getArtist(req.body.artistid)
+        spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
           .catch(err => {
             return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
           })
-          .then(artist => {
-              spotifyApi.getArtistTopTracks(req.body.artistid, 'FR')
+          .then(artist => { 
+              spotifyApi.getArtistTopTracks(req.body.artistid, 'FR') //on chope les top tracks
             .then(toptracks => {
               console.log(toptracks);
               console.log(artist);

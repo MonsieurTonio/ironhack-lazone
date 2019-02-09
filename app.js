@@ -12,8 +12,8 @@ const path         = require('path');
 const session    = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
-    
 
+    
 
 mongoose
   .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
@@ -87,6 +87,5 @@ app.use('/dashboard', dashboardRoutes);
 
 // const confirmationRoutes = require('./routes/confirmation');
 // app.use('/dashboard', confirmationRoutes);
-      
 
 module.exports = app;
