@@ -17,7 +17,6 @@ let transporter = nodemailer.createTransport({
   ignoreTLS: true
 });
 
-
 // LOGIN ROUTE
 router.get("/login", (req, res, next) => {
   let data = {

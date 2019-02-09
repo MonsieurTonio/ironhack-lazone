@@ -129,6 +129,17 @@ label {
   text-transform: uppercase;
   color: #FFFFFF; }
 
+<<<<<<< HEAD
+.search-button {
+  position: absolute;
+  width: 174px;
+  height: 31px;
+  margin-left: 78%;
+  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  border-radius: 20px;
+  border: transparent;
+
+=======
 .homepage-body {
   background-image: url("../images/concert.jpeg");
   background-size: cover; }
@@ -167,10 +178,45 @@ label {
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
   border-color: white;
+>>>>>>> 7cc950c0c6bb9b723064ce99d535b6ea693cecc5
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
+<<<<<<< HEAD
+  font-size: 12px;
+  text-transform: uppercase;
+  color:  #FFFFFF;
+
+
+}
+
+.dashboard-layout {
+  margin-left: 500px;
+}
+
+.list {
+  /* background: #FFFFFF;
+  border-radius: 3px;
+  width: 275px;
+  height: 40px; */
+  list-style-type: none; }
+
+
+  /* DASHBOARD PAGE */
+
+.type-artist-name {
+  position: absolute;
+  margin-left: 25%;
+  width: 714px;
+  height: 39.61px;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+=======
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -195,10 +241,23 @@ a:hover {
 
 .footer-link {
   position: relative;
+>>>>>>> 7cc950c0c6bb9b723064ce99d535b6ea693cecc5
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
+<<<<<<< HEAD
+  font-size: 12px;
+  text-transform: uppercase;
+  color:  #FFFFFF;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #FFFFFF;
+  opacity: 1; /* Firefox */
+  padding-left: 3%;
+}
+=======
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -264,191 +323,5 @@ a:hover {
   left: 100px;
   color: white; }
 
-.list {
-  /* background: #FFFFFF;
-  border-radius: 3px;
-  width: 275px;
-  height: 40px; */
-  list-style-type: none; }
-
-
-
-
-
-/*------------------------ DASHBOARD PAGE ------------------------*/
-
-
-.dashboard-layout {
-  margin-left: 500px;
-}
-
-.artist-form {
-  margin-top: 3%;
-  text-align: center;
-  padding-bottom: 3%;
-}
-
-.type-artist-name {
-  width: 50%;
-  height: 39.61px;
-  border: 1px solid #FFFFFF;
-  background-color: transparent;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 12px;
-  text-transform: uppercase;
-  color:  #FFFFFF;
-}
-
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #FFFFFF;
-  opacity: 1; /* Firefox */
-  padding-left: 5%;
-}
-
-.search-button {
-  width: 20%;
-  height: 31px;
-  margin-left: 2%;
-  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
-  border-radius: 20px;
-  border: transparent;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 12px;
-  text-transform: uppercase;
-  color:  #FFFFFF;
-}
-
-
-
-/*------------------------ TABLE ------------------------*/
-
-table { 
-  width: 100%;
-  border-collapse: collapse;
-}
-
-
-.spotify-followers {
-  width: 15%;
-  
-  font-family: Montserrat;
-  font-size: 62%;
-  text-transform: uppercase;
-  color: #CBCFD4;
-}
-
-.spotify-popularity {
-  width: 15%;
-
-  font-family: Montserrat;
-  font-size: 62%;
-  text-transform: uppercase;
-  color: #CBCFD4;
-}
-
-.spotify-listeners {
-  width: 15%;
-  
-  font-family: Montserrat;
-  font-size: 62%;
-  text-transform: uppercase;
-  color: #CBCFD4;
-}
-
-.deezer-followers {
-  width: 15%;
-
-  font-family: Montserrat;
-  font-size: 62%;
-  text-transform: uppercase;
-  color: #CBCFD4;
-}
-
-.deezer-popularity {
-  width: 15%;
-
-  font-family: Montserrat;
-  font-size: 62%;
-  text-transform: uppercase;
-  color: #CBCFD4;
-}
-
-
-/* ------------------------ ARTIST CARDS ------------------------ */
-
-
-/* Zebra striping */
-
-tr:nth-of-type(odd) { 
-  background: #3C444D;; 
-  font-family: Montserrat;
-}
-th { 
-  background: #747D88;; 
-  color: white; 
-
-}
-td, th { 
-  padding: 6px;
-  color: white;
-  text-align: left; 
-  font-family: Montserrat;
-  /* font-size: 62%; */
-}
-
-.artist-column {
-  display: flex;
-  flex-direction: row;
-}
-
-.artist-pic-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* justify-content: flex-end; */
-}
-
-.artist-pic {
-  width: 38.79px;
-  border-radius: 100px;
-
-}
-
-.artist-info-container {
-  padding-left: 10%;
-}
-
-.artist-name {
-font-family: Zilla Slab;
-font-size: 120%;
-color: #FFFFFF;
-}
-
-.genre-name {
-  font-family: Zilla Slab;
-  font-size: 80%;
-  color: #FFFFFF;
-  }
-
-
-.artist-card-container {
-  width: 1440px;
-  height: 69px;
-  left: 0px;
-  top: 272px;
-  
-  background: #747D88;
-}
-
+/*# sourceMappingURL=style.css.map */
+>>>>>>> 7cc950c0c6bb9b723064ce99d535b6ea693cecc5
