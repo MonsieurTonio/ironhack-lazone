@@ -5,7 +5,6 @@ body {
   background: #474F5A;
 }
 
-
 h2 {
   font-size: 54px;
   font-weight:lighter;
@@ -20,6 +19,12 @@ h4{
   font-size: 30px;
   font-weight:lighter;
   color: #FFFFFF;
+}
+h6{
+  font-weight:lighter;
+  position: relative;
+  top: 155px;
+  left: 200px;
 }
 
 .authblock{
@@ -124,7 +129,6 @@ label{
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
-
 }
 
 .error-message{
@@ -154,7 +158,7 @@ label{
   background-size: cover;
 }
 .homepage-title{
-  color: #FFFFFF
+  color: #FFFFFF;
 }
 
 .homepage-text{
@@ -165,7 +169,7 @@ label{
 .homepage-container{
   position: relative;
   top: 100px;
-  left: 100px;
+  padding: 50px;
 }
  
 /* .trendingnowbutton{
@@ -198,9 +202,11 @@ label{
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF;
-  position: relative;
-  left: 800px;
-  top: 100px;
+}
+
+a:hover{
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 .footerbar{
@@ -217,10 +223,29 @@ label{
 
 .footer-text-style{
   // list-style-type: none;
-  display: block;
+  text-align: center;
 }
 
 .footer-link{
+  position: relative;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 20px;
+  bottom: 20px;
+}
+
+.signUpButton{
+  width: 90px;
+  height: 30px;
+  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  border-radius: 20px;
+  border-color:white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -230,4 +255,54 @@ label{
   text-transform: uppercase;
   color: #FFFFFF;
 }
+.logHomeButton{
+  margin: 0 10px;
+}
 
+.createPosition{
+  color: white;
+  text-align: right;
+}
+
+.createColor{
+  color: white;
+}
+
+.artistHomePage {
+  border: 1.5px solid;
+  border-color: white;
+  border-radius: 4px;
+}
+
+.drake{
+  position: relative;
+  left: 250px;
+  bottom : 50px;
+}
+
+.beyonce{
+  position: relative;
+  left: 230px;
+  bottom : 50px;
+}
+
+.rihanna{
+  position: relative;
+  left: 210px;
+  bottom : 50px;
+}
+
+.brunomars{
+  position: relative;
+  left: 190px;
+  bottom : 50px;
+}
+
+.trending{
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  bottom: 20px;
+  left: 100px;
+  color: white;
+}

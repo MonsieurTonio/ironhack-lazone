@@ -16,6 +16,12 @@ h4 {
   font-weight: lighter;
   color: #FFFFFF; }
 
+h6 {
+  font-weight: lighter;
+  position: relative;
+  top: 155px;
+  left: 200px; }
+
 .authblock {
   font-family: 'Zilla slab', serif;
   color: #FFFFFF;
@@ -137,7 +143,7 @@ label {
 .homepage-container {
   position: relative;
   top: 100px;
-  left: 100px; }
+  padding: 50px; }
 
 /* .trendingnowbutton{
   width: 200px;
@@ -168,10 +174,11 @@ label {
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
+  color: #FFFFFF; }
+
+a:hover {
   color: #FFFFFF;
-  position: relative;
-  left: 800px;
-  top: 100px; }
+  text-decoration: none; }
 
 .footerbar {
   position: fixed;
@@ -184,9 +191,27 @@ label {
   margin: 23px 0; }
 
 .footer-text-style {
-  display: block; }
+  text-align: center; }
 
 .footer-link {
+  position: relative;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 20px;
+  bottom: 20px; }
+
+.signUpButton {
+  width: 90px;
+  height: 30px;
+  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  border-radius: 20px;
+  border-color: white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -195,5 +220,48 @@ label {
   text-align: center;
   text-transform: uppercase;
   color: #FFFFFF; }
+
+.logHomeButton {
+  margin: 0 10px; }
+
+.createPosition {
+  color: white;
+  text-align: right; }
+
+.createColor {
+  color: white; }
+
+.artistHomePage {
+  border: 1.5px solid;
+  border-color: white;
+  border-radius: 4px; }
+
+.drake {
+  position: relative;
+  left: 250px;
+  bottom: 50px; }
+
+.beyonce {
+  position: relative;
+  left: 230px;
+  bottom: 50px; }
+
+.rihanna {
+  position: relative;
+  left: 210px;
+  bottom: 50px; }
+
+.brunomars {
+  position: relative;
+  left: 190px;
+  bottom: 50px; }
+
+.trending {
+  font-size: 20px;
+  position: relative;
+  top: 20px;
+  bottom: 20px;
+  left: 100px;
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */
