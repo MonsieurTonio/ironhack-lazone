@@ -17,7 +17,7 @@ router.get("/", (req, res, next) => {
 
 router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 
-    User.findById("5c4c7b50e36d9013b2fec8b0",function(err,user){
+    User.findById("5c535b61d59e8a3d7269016c",function(err,user){
       if (err) return next(err);
 
       console.log('user', user)
@@ -31,7 +31,7 @@ router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
 router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('photo'), (req, res, next) => {
   console.log('coucou', req.file.url) 
 
-  User.findById("5c4c7b50e36d9013b2fec8b0",function(err,user){
+  User.findById("5c535b61d59e8a3d7269016c",function(err,user){
     if (err) return next(err);
     user.avatarUrl = req.file.url
     user.save(function(err,user){
