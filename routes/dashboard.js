@@ -49,8 +49,7 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
           queryname: req.query.artist,
           myartists: dbartists
         });
-      })
-      ;
+      });
   } else {
     res.render('dashboard', {
       myartists: dbartists
@@ -66,48 +65,55 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-      Artist.findOne({spotifyAccountId: req.body.artistid})
-      .then((artist) => {
-          if (!artist) {
-            spotifyApi.getArtist(req.body.artistid)
-              .catch(err => {
-                return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-              })
-              .then((data) => {
-                console.log(data.body.name);
-                var newArtist = new Artist({
-                  artistName: data.body.name,
-                  spotifyAccountId: data.body.id,
-                  genre: data.body.genres,
-                  album: data.body.albums,
-                  image:data.body.images[0].url,
-                  datas: [
-                    {
-                      spotifyFlws: data.body.followers.total,
-                      spotifyPopularityScore: data.body.popularity
-                    }
-                  ]
-                })
-
-                newArtist.save(function (err) {
-                  if (err) {
-                    return next(err);
-                  } else {
-                    console.log('Save artist successfully!');
-                  }
-                })
-                res.render('dashboard') //on envoie le dashboard pour répondre à la requête
-              })
-            
-            
-
-          }
-          else {
-            res.render('dashboard', {message: 'You are already following this artist'})
-
-          }
-      })
+  Artist.findOne({
+      spotifyAccountId: req.body.artistid
     })
-  
+    .then((artist) => {
+      if (!artist) {
+        spotifyApi.getArtist(req.body.artistid)
+          .catch(err => {
+            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+          })
+          .then(artist => {
+              spotifyApi.getArtistTopTracks(req.body.artistid, 'FR')
+            .then(toptracks => {
+              console.log(toptracks);
+              console.log(artist);
+              var newArtist = new Artist({
+                artistName: artist.body.name,
+                spotifyAccountId: artist.body.id,
+                genre: artist.body.genres,
+                album: artist.body.albums,
+                image: artist.body.images[0].url,
+                toptracks:[toptracks.body.tracks[0].name,toptracks.body.tracks[1].name,toptracks.body.tracks[2].name],
+                datas: [{
+                  spotifyFlws: artist.body.followers.total,
+                  spotifyPopularityScore: artist.body.popularity
+                }]
+              })
+
+              newArtist.save(function (err) {
+                if (err) {
+                  return next(err);
+                } else {
+                  console.log('Save artist successfully!');
+                }
+              })
+              res.render('dashboard') //on envoie le dashboard pour répondre à la requête
+            })
+          }
+
+        )
+
+
+      } else {
+        res.render('dashboard', {
+          message: 'You are already following this artist'
+        })
+
+      }
+    })
+})
+
 
 module.exports = router;

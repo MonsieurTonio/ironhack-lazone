@@ -31,6 +31,7 @@ const artistSchema = new Schema ({
   genre: String,
   album: [String],
   image: String,
+  toptracks:[String],
   datas: [dataSchema]
 
 }, {
