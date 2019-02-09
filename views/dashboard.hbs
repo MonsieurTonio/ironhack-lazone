@@ -1,11 +1,13 @@
 <p>Welcome {{user.firstName}}, this is your dashboard</p>
 
+
+
 {{! Frmaulaire de recherche d'artistes dans l'API }}
 
 <form action="/dashboard" method="GET">
 Artist:<br>
- <input type="text" name="artist" value="{{queryname}}"><br>
- <button type="submit">Search for an artist</button>
+ <input  class= "type-artist-name"  type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE"><br>
+ <button class= "search-button" type="submit">Search</button>
 </form>
 
 

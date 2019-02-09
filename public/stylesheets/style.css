@@ -118,20 +118,25 @@ label {
   text-transform: uppercase;
   color: #FFFFFF; }
 
-.searchButton {
-  width: 200px;
-  height: 40px;
+.search-button {
+  position: absolute;
+  width: 174px;
+  height: 31px;
+  margin-left: 78%;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
-  border-color: white;
+  border: transparent;
+
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   line-height: normal;
-  font-size: 10px;
-  text-align: center;
+  font-size: 12px;
   text-transform: uppercase;
-  color: #FFFFFF; }
+  color:  #FFFFFF;
+
+
+}
 
 .dashboard-layout {
   margin-left: 500px;
@@ -143,3 +148,32 @@ label {
   width: 275px;
   height: 40px; */
   list-style-type: none; }
+
+
+  /* DASHBOARD PAGE */
+
+.type-artist-name {
+  position: absolute;
+  margin-left: 25%;
+  width: 714px;
+  height: 39.61px;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 12px;
+  text-transform: uppercase;
+  color:  #FFFFFF;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #FFFFFF;
+  opacity: 1; /* Firefox */
+  padding-left: 3%;
+}
