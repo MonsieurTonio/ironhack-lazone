@@ -1,47 +1,54 @@
-@import url("https://fonts.googleapis.com/css?family=Zilla+Slab");
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
-  background: #474F5A; }
+  background: #474F5A;
+}
 
 h2 {
   font-size: 54px;
-  font-weight: lighter; }
+  font-weight:lighter;
+}
 
 h3 {
   font-size: 24px;
-  font-weight: lighter; }
+  font-weight:lighter;
+}
 
-h4 {
+h4{
   font-size: 30px;
-  font-weight: lighter;
-  color: #FFFFFF; }
-
-h6 {
-  font-weight: lighter;
+  font-weight:lighter;
+  color: #FFFFFF;
+}
+h6{
+  font-weight:lighter;
   position: relative;
   top: 155px;
-  left: 200px; }
+  left: 200px;
+}
 
-.authblock {
+.authblock{
   font-family: 'Zilla slab', serif;
   color: #FFFFFF;
   position: relative;
   width: 50%;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
+.authtitle{
+  margin: 10px 10px 10px 10px;
+}
 
-.authtitle {
-  margin: 10px 10px 10px 10px; }
+.zonelogin{
+    position: absolute;
+    right: 100%;
+    top: 0;
+    margin-right: 70px;
+    width: 141px;
+    height: 48px;
+    margin-top: 50px;
+}
 
-.zonelogin {
-  position: absolute;
-  right: 100%;
-  top: 0;
-  margin-right: 70px;
-  width: 141px;
-  height: 48px;
-  margin-top: 50px; }
-
-.profilePic {
+.profilePic{
   position: absolute;
   right: 100%;
   top: 0;
@@ -49,57 +56,71 @@ h6 {
   width: 128px;
   height: 128px;
   margin-top: 50px;
-  border-radius: 100px;
-  border-color: linear-gradient(90deg, #F27A54 0%, #A154F2 100%); }
+  border-radius:100px;
+  border-color:linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+}
 
-.account-message {
+
+.account-message{
   font-family: 'Zilla slab', serif;
   color: #FFFFFF;
   font-size: 18px;
-  margin-top: 20px; }
+  margin-top: 20px;
+}
 
-.account-message :link {
-  color: white; }
+.account-message :link{
+  color:white;
+  
+}
 
 .account-message :visited {
-  color: white; }
+  color: white;
+}
 
 .account-message :hover {
-  color: #CBCFD4; }
+  color:#CBCFD4	;
+}
 
-.inputbox {
+.inputbox{
   background: #FFFFFF;
   border-radius: 3px;
   width: 275px;
-  height: 40px; }
+  height: 40px;
+}
 
-label {
+label{
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
   line-height: 18px;
   font-size: 10px;
   text-transform: uppercase;
-  color: #CBCFD4; }
+  color: #CBCFD4;
+}
 
-.champsinput {
+.champsinput{
   width: 50%;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .champsinput input {
-  display: block;
-  font-size: 14px;
-  font-family: 'Zilla slab', serif; }
+    display:block;
+    font-size: 14px;
+    font-family: 'Zilla slab', serif;
+
+}
 
 .champsinput label {
-  display: block; }
+  display:block;
+}
 
-.loginButton {
+
+.loginButton{
   width: 200px;
   height: 40px;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
-  border-color: white;
+  border-color:white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -107,9 +128,10 @@ label {
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+}
 
-.error-message {
+.error-message{
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -117,9 +139,10 @@ label {
   font-size: 10px;
   text-align: left;
   text-transform: uppercase;
-  color: lightgrey; }
+  color: lightgrey;
+}
 
-.nav-link {
+.nav-link{
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -127,24 +150,28 @@ label {
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF; }
-
-.homepage-body {
-  background-image: url("../images/concert.jpeg");
-  background-size: cover; }
-
-.homepage-title {
-  color: #FFFFFF; }
-
-.homepage-text {
   color: #FFFFFF;
-  margin: 40px 0; }
+}
 
-.homepage-container {
+.homepage-body{
+  background-image: url("../images/concert.jpeg");
+  background-size: cover;
+}
+.homepage-title{
+  color: #FFFFFF;
+}
+
+.homepage-text{
+  color: #FFFFFF;
+  margin: 40px 0;
+}
+
+.homepage-container{
   position: relative;
   top: 100px;
-  padding: 50px; }
-
+  padding: 50px;
+}
+ 
 /* .trendingnowbutton{
   width: 200px;
   height: 40px;
@@ -161,12 +188,12 @@ label {
   color: #FFFFFF;
 }
  */
-.createAccount {
+.createAccount{
   width: 200px;
   height: 40px;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
-  border-color: white;
+  border-color:white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -174,26 +201,32 @@ label {
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF; }
-
-a:hover {
   color: #FFFFFF;
-  text-decoration: none; }
+}
 
-.footerbar {
+a:hover{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.footerbar{
   position: fixed;
   width: 100%;
-  bottom: 0; }
+  bottom: 0;
+}
 
-.footer-logo {
+.footer-logo{
   position: relative;
   left: 625px;
-  margin: 23px 0; }
+  margin: 23px 0
+}
 
-.footer-text-style {
-  text-align: center; }
+.footer-text-style{
+  // list-style-type: none;
+  text-align: center;
+}
 
-.footer-link {
+.footer-link{
   position: relative;
   font-family: Montserrat;
   font-style: normal;
@@ -204,14 +237,15 @@ a:hover {
   text-transform: uppercase;
   color: #FFFFFF;
   padding: 20px;
-  bottom: 20px; }
+  bottom: 20px;
+}
 
-.signUpButton {
+.signUpButton{
   width: 90px;
   height: 30px;
   background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
   border-radius: 20px;
-  border-color: white;
+  border-color:white;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -219,107 +253,56 @@ a:hover {
   font-size: 10px;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+}
+.logHomeButton{
+  margin: 0 10px;
+}
 
-.logHomeButton {
-  margin: 0 10px; }
-
-.createPosition {
+.createPosition{
   color: white;
-  text-align: right; }
+  text-align: right;
+}
 
-.createColor {
-  color: white; }
+.createColor{
+  color: white;
+}
 
 .artistHomePage {
   border: 1.5px solid;
   border-color: white;
-  border-radius: 4px; }
+  border-radius: 4px;
+}
 
-.drake {
+.drake{
   position: relative;
   left: 250px;
-  bottom: 50px; }
+  bottom : 50px;
+}
 
-.beyonce {
+.beyonce{
   position: relative;
   left: 230px;
-  bottom: 50px; }
+  bottom : 50px;
+}
 
-.rihanna {
+.rihanna{
   position: relative;
   left: 210px;
-  bottom: 50px; }
+  bottom : 50px;
+}
 
-.brunomars {
+.brunomars{
   position: relative;
   left: 190px;
-  bottom: 50px; }
+  bottom : 50px;
+}
 
-.trending {
+.trending{
   font-size: 20px;
   position: relative;
   top: 20px;
   bottom: 20px;
   left: 100px;
-  color: white; }
-
-.search-button {
-  position: absolute;
-  width: 174px;
-  height: 31px;
-  margin-left: 78%;
-  background: linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
-  border-radius: 20px;
-  border: transparent;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 12px;
-  text-transform: uppercase;
-  color:  #FFFFFF;
-
-
-}
-
-.dashboard-layout {
-  margin-left: 500px;
-}
-
-.list {
-  /* background: #FFFFFF;
-  border-radius: 3px;
-  width: 275px;
-  height: 40px; */
-  list-style-type: none; }
-
-
-  /* DASHBOARD PAGE */
-
-.type-artist-name {
-  position: absolute;
-  margin-left: 25%;
-  width: 714px;
-  height: 39.61px;
-  border: 1px solid #FFFFFF;
-  background-color: transparent;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  font-size: 12px;
-  text-transform: uppercase;
-  color:  #FFFFFF;
-}
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #FFFFFF;
-  opacity: 1; /* Firefox */
-  padding-left: 3%;
+  color: white;
 }
