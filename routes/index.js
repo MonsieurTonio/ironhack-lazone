@@ -28,7 +28,7 @@ router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
     })
 });
 
-router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('photo'), (req, res, next) => {
+router.post('/profile', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
   console.log('coucou', req.file.url) 
 
   User.findById("5c535b61d59e8a3d7269016c",function(err,user){
