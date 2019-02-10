@@ -1,0 +1,48 @@
+<p>Welcome {{user.firstName}}, this is your dashboard</p>
+
+<<<<<<< HEAD
+{{! Frmaulaire de recherche d'artistes dans l'API }}
+
+<form action="/dashboard" method="GET">
+Artist:<br>
+ <input type="text" name="artist" value="{{queryname}}"><br>
+ <button type="submit">Search for an artist</button>
+</form>
+
+
+{{! Résultats des artistes trouvés par rapport à la queryname }}
+
+
+<ul>
+  {{#each artistsfound}}
+  <li>
+    <form action="/dashboard" method="POST">
+      <input type="hidden" name="artistid" value={{id}}>
+      <button>{{name}}</button>
+    </form>
+  </li>
+  {{/each}}
+</ul>
+
+
+
+{{! Artists que je follow déjà }}
+<ul>
+  liste de mes artistes TODO
+</ul>
+=======
+<div class="dashboard-layout">
+    <form action="/dashboard" method="POST">
+        <input class="inputsearchbar" type="text" name="artist">   
+        <button type="submit" value="Submit" class="searchButton">FOLLOW THIS ARTIST</button>
+    </form>
+
+     <ul>
+        {{#each artists}}
+            <li class="inputbox list" id="selectArtist">{{name}}</li>
+        {{/each}}
+    </ul>
+
+
+</div>
+>>>>>>> 518b90d593631dd11c3e30416c4d9c6651f3b793
