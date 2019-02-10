@@ -33,10 +33,16 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     .then((user) => {
 
       // Ici rajouter les artistes déjà saved dans ma database
-
       let dbartists = req.user.artistsFollowed
 
+      Artist.find({
+        '_id': { $in: dbartists}
+    })
+    .catch(err => console.log('PAS RETROUVE TOUS LES ID'))
+    .then((artists) => {
+       // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
       if (req.query.artist) {
+        // console.log(artist)
         spotifyApi.searchArtists(req.query.artist)
           .catch(err => {
             return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
@@ -46,17 +52,19 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
               user: user,
               artistsfound: data.body.artists.items,
               queryname: req.query.artist,
-              myartists: dbartists
+              myartists: artists
             });
           });
       } else {
+        // console.log(artists)
         res.render('dashboard', {
           user: user,
-          myartists: dbartists
+          myartists: artists
         });
       }
     });
 })
+});
 
 
 router.post('/', (req, res, next) => {
@@ -65,14 +73,6 @@ router.post('/', (req, res, next) => {
     })
     .then((artist) => {
       if (!artist) {
-// User.findById(req.user._id) // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
-// .catch(err => next(err))
-// .then((user) => {
-// user.artistsFollowed.push(artist.body.id)
-// user.save()
-// console.log("artist sauvé dans artistfollowed");
-// })
-
         spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
           .catch(err => {
             return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur

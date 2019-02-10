@@ -28,16 +28,14 @@
 
 {{! ----------- Artists que je follow déjà ----------- }}
 
-{{!-- <ul>
+<ul>
   {{#each myartists}}
-  {{>artistCards name="{{name}}"}}
-  {{else}}
-  <p>No artist yet!</p>
+  {{artistName}}
   {{/each}}
-</ul> --}}
+</ul>
 
 
-<table>
+{{!-- <table>
   <thead>
     <tr>
       <th>Artist</th>
@@ -119,4 +117,4 @@
       <td>127/100</td>
     </tr>
   </tbody>
-</table>
+</table> --}}
