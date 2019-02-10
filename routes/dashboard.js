@@ -39,14 +39,14 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
       if (req.query.artist) {
         spotifyApi.searchArtists(req.query.artist)
           .catch(err => {
-            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+            return next(err); //Si erreur => on arrête tout et on veut afficher l'erreur
           })
           .then((data) => {
             res.render('dashboard', {
               user: user,
               artistsfound: data.body.artists.items,
               queryname: req.query.artist,
-              myartists: dbartists
+              myartists: mdbartists
             });
           })
           ;
@@ -97,6 +97,14 @@ router.post('/', (req, res, next) => {
                   console.log('Save artist successfully!');
                 }
               })
+
+              User.findById(req.user._id, function (err, user){
+                if (err) return next (err);
+                user.artistsFollowed.push(newArtist._id)
+                console.log("Artist saved artist followed")
+                user.save();
+              })
+
               res.render('dashboard') //on envoie le dashboard pour répondre à la requête
             })
           }
@@ -111,6 +119,7 @@ router.post('/', (req, res, next) => {
 
       }
     })
+
 })
 
 
