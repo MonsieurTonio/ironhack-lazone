@@ -30,17 +30,15 @@
 
 test :{{myartists}}
 
-{{!-- <ul>
-  {{#each artistFollowed}}
-  {{>artistCards name="{{name}}"}}
-  {{else}}
-  <p>No artist yet!</p>
+<ul>
+  {{#each myartists}}
+  {{artistName}}
   {{/each}}
-</ul> --}}
+</ul>
 
 
 
-<table>
+{{!-- <table>
   <thead>
     <tr>
       <th>Artist</th>
@@ -122,4 +120,4 @@ test :{{myartists}}
       <td>127/100</td>
     </tr>
   </tbody>
-</table>
+</table> --}}
