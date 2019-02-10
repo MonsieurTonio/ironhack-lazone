@@ -28,68 +28,90 @@ spotifyApi.clientCredentialsGrant()
 router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   console.log('hey');
 
-  // User.findById(req.user._id) ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
-  //   .catch(err => next(err))
-  //   .then((user) => {
-  //   })
-  // ;
+  User.findById(req.user._id) // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
+    .catch(err => next(err))
+    .then((user) => {
 
-  // Ici rajouter les artistes déjà saved dans ma database
+      // Ici rajouter les artistes déjà saved dans ma database
 
-  let dbartists = req.user.artistsFollowed
+      let dbartists = req.user.artistsFollowed
 
-  if (req.query.artist) {
-    spotifyApi.searchArtists(req.query.artist)
-      .catch(err => {
-        return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-      })
-      .then((data) => {
+      if (req.query.artist) {
+        spotifyApi.searchArtists(req.query.artist)
+          .catch(err => {
+            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+          })
+          .then((data) => {
+            res.render('dashboard', {
+              user: user,
+              artistsfound: data.body.artists.items,
+              queryname: req.query.artist,
+              myartists: dbartists
+            });
+          })
+          ;
+      } else {
         res.render('dashboard', {
-          artistsfound: data.body.artists.items,
-          queryname: req.query.artist,
+          user: user,
           myartists: dbartists
         });
-      })
-      ;
-  } else {
-    res.render('dashboard', {
-      myartists: dbartists
-    });
-  }
-
-
+      }
+    })
+  ;
 })
-
-// })
-
 
 
 router.post('/', (req, res, next) => {
-  spotifyApi.getArtist(req.body.artistid)
-  spotifyApi.getArtist(req.body.artistid)
-    .catch(err => {
-      return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-    })
-    .then((data) => {
-      console.log(data.body.name);
-      var newArtist = new Artist({
-        artistName: data.body.name,
-        spotifyAccountId: data.body.id,
-        genre: data.body.genres,
-        album: data.body.albums,
-        datas: [data.body.followers]
-      })
 
-      newArtist.save(function (err) {
-        if (err) {
-          throw err;
-        } else {
-          console.log('Save artist successfully!');
-        }
-      })
+  Artist.findOne({
+      spotifyAccountId: req.body.artistid
     })
+    .then((artist) => {
+      if (!artist) {
+        spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
+          .catch(err => {
+            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+          })
+          .then(artist => { 
+              spotifyApi.getArtistTopTracks(req.body.artistid, 'FR') //on chope les top tracks
+            .then(toptracks => {
+              console.log(toptracks);
+              console.log(artist);
+              var newArtist = new Artist({
+                artistName: artist.body.name,
+                spotifyAccountId: artist.body.id,
+                genre: artist.body.genres,
+                album: artist.body.albums,
+                image: artist.body.images[0].url,
+                toptracks:[toptracks.body.tracks[0].name,toptracks.body.tracks[1].name,toptracks.body.tracks[2].name],
+                datas: [{
+                  spotifyFlws: artist.body.followers.total,
+                  spotifyPopularityScore: artist.body.popularity
+                }]
+              })
 
-      res.render('dashboard') // on envoie le dashboard pour répondre à la requête
-  });
+              newArtist.save(function (err) {
+                if (err) {
+                  return next(err);
+                } else {
+                  console.log('Save artist successfully!');
+                }
+              })
+              res.render('dashboard') //on envoie le dashboard pour répondre à la requête
+            })
+          }
+
+        )
+
+
+      } else {
+        res.render('dashboard', {
+          message: 'You are already following this artist'
+        })
+
+      }
+    })
+})
+
 
 module.exports = router;

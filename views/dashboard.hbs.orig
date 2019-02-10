@@ -1,5 +1,19 @@
-<<<<<<< HEAD
-<p>Welcome {{user.firstName}}, this is your dashboard</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> user dashboard </title>
+</head>
+<body>
+  <p>Welcome {{user.firstName}}, this is your dashboard</p>
+  <form action="">
+    <label for="artistDetails"></label>
+        <input class="inputbox" id="artistDetails" type="text" name="firstName" placeholder="Type here">
+  </form>
+</body>
+</html>
 
 
 
@@ -7,8 +21,14 @@
 
 <form action="/dashboard" method="GET">
 Artist:<br>
+<<<<<<< HEAD
+ <input type="text" name="artist" value="{{queryname}}"><br>
+ <button type="submit">Search for an artist</button>
+ {{message}}
+=======
  <input  class= "type-artist-name"  type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE"><br>
  <button class= "search-button" type="submit">Search</button>
+>>>>>>> 99e63b09ecb7c0a300a997881404ad1ab52c7acd
 </form>
 
 
@@ -32,21 +52,3 @@ Artist:<br>
 <ul>
   liste de mes artistes TODO
 </ul>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title> user dashboard </title>
-</head>
-<body>
-  <p>Welcome {{user.firstName}}, this is your dashboard</p>
-  <form action="">
-    <label for="artistDetails"></label>
-        <input class="inputbox" id="artistDetails" type="text" name="firstName" placeholder="Type here">
-  </form>
-</body>
-</html>
->>>>>>> 7cc950c0c6bb9b723064ce99d535b6ea693cecc5
