@@ -349,6 +349,12 @@ a:hover{
   padding-left: 5%;
 }
 
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:black;
+  opacity: 1; /* Firefox */
+  padding-left: 0%;
+}
+
 .search-button {
   width: 20%;
   height: 31px;
