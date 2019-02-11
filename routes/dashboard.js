@@ -43,7 +43,9 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
           // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
           if (req.query.artist) {
             // console.log(artist)
-            spotifyApi.searchArtists(req.query.artist, {limit:5})
+            spotifyApi.searchArtists(req.query.artist, {
+                limit: 5
+              })
               .catch(err => {
                 return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
               })
@@ -69,80 +71,85 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
-      Artist.findOne({
-          spotifyAccountId: req.body.artistid
-        })
-        .then((artist) => {
-          if (!artist) {
-            spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
-              .catch(err => {
-                return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+  Artist.findOne({
+      spotifyAccountId: req.body.artistid
+    })
+    .then((artist) => {
+      if (!artist) {
+        spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
+          .catch(err => {
+            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+          })
+          .then(artist => {
+            spotifyApi.getArtistTopTracks(req.body.artistid, 'FR') //on chope les top tracks
+              .then(toptracks => {
+                console.log(toptracks);
+                console.log(artist);
+                var newArtist = new Artist({
+                  artistName: artist.body.name,
+                  spotifyAccountId: artist.body.id,
+                  genre: artist.body.genres,
+                  album: artist.body.albums,
+                  image: artist.body.images[0].url,
+                  toptracks: [toptracks.body.tracks[0].name, toptracks.body.tracks[1].name, toptracks.body.tracks[2].name],
+                  datas: [{
+                    spotifyFlws: artist.body.followers.total,
+                    spotifyPopularityScore: artist.body.popularity
+                  }]
+                })
+
+                newArtist.save(function (err) {
+                  if (err) {
+                    return next(err);
+                  } else {
+                    console.log('Save artist successfully!');
+                  }
+                })
+                User.findById(req.user._id, function (err, user) {
+                  if (err) return next(err);
+                  user.artistsFollowed.push(newArtist._id)
+                  console.log("artiste sauvé dans artist followed!")
+                  user.save();
+                  let artistsFollow = user.artistsFollowed
+                  Artist.find({
+                      '_id': {
+                        $in: artistsFollow
+                      }
+                    })
+                    .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
+                    .then((artists) => {
+                      res.render('dashboard', {
+                        user: user,
+                        myartists: artists
+                      });
+                    })
+                })
               })
-              .then(artist => {
-                  spotifyApi.getArtistTopTracks(req.body.artistid, 'FR') //on chope les top tracks
-                    .then(toptracks => {
-                        console.log(toptracks);
-                        console.log(artist);
-                        var newArtist = new Artist({
-                          artistName: artist.body.name,
-                          spotifyAccountId: artist.body.id,
-                          genre: artist.body.genres,
-                          album: artist.body.albums,
-                          image: artist.body.images[0].url,
-                          toptracks: [toptracks.body.tracks[0].name, toptracks.body.tracks[1].name, toptracks.body.tracks[2].name],
-                          datas: [{
-                            spotifyFlws: artist.body.followers.total,
-                            spotifyPopularityScore: artist.body.popularity
-                          }]
-                        })
-
-                        newArtist.save(function (err) {
-                          if (err) {
-                            return next(err);
-                          } else {
-                            console.log('Save artist successfully!');
-                          }
-                        })
-                        User.findById(req.user._id, function (err, user) {
-                          if (err) return next(err);
-                          user.artistsFollowed.push(newArtist._id)
-                          console.log("artiste sauvé dans artist followed!")
-                          user.save();
-                          let artistsFollow = user.artistsFollowed
-                          Artist.find({
-                              '_id': {
-                                $in: artistsFollow
-                              }
-                            })
-                          .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
-                          .then((artists) => {
-                              res.render('dashboard', {
-                                user: user,
-                                myartists: artists
-                              }); 
-                            })
-                          })})})}
-      
-                       else {
-                        User.findById(req.user._id, function (err, user) {
-                          if (err) return next(err);
-                        let artistsFollow = user.artistsFollowed
-                        Artist.find({
-                          '_id': {
-                            $in: artistsFollow
-                          }
-                        })
-                      .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
-                      .then((artists) => { 
-
-                        res.render('dashboard', {
-                          message: 'You are already following this artist'
-                        })})
-                        })}})})
-
-                      
-    
-    
+          })
+      } else {
+        User.findById(req.user._id, function (err, user) {
+          if (err) return next(err);
+          let artistsFollow = user.artistsFollowed
+          Artist.find({
+              '_id': {
+                $in: artistsFollow
+              }
+            })
+            .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
+            .then((artists) => {
+              res.render('dashboard', {
+                message: 'You are already following this artist',
+                myartists : artists
+              })
+            })
+        })
+      }
+    })
+})
 
 
-    module.exports = router;
+
+
+
+
+module.exports = router;
