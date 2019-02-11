@@ -24,9 +24,14 @@ spotifyApi.clientCredentialsGrant()
   });
 
 
-
 router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   console.log('hey');
+  
+  Artist.find().then(function (artists) {
+      artists.forEach(function (artist) {
+          updateArtist(artist.spotifyAccountId);
+      })})
+  
 
   User.findById(req.user._id) // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
     .catch(err => next(err))
@@ -113,5 +118,32 @@ router.post('/', (req, res, next) => {
     })
 })
 
+
+function updateArtist(id) {
+  return new Promise(function (resolve, reject) {
+          Artist.findOne({
+                  spotifyAccountId: id
+              })
+              .then((artist) => {
+                  //console.log(artist)
+                  spotifyApi.getArtist(id) //on chope les données de l'artiste
+                      .catch(err => {
+                          console.log("test")
+                          return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+                      })
+                      .then(data => {
+                              console.log(data)
+                              artist.datas.push({
+                                  spotifyFlws: data.body.followers.total,
+                                  spotifyPopularityScore: data.body.popularity
+                              })
+                              artist.save()
+                          }
+
+
+                      )
+              });
+      })
+  }
 
 module.exports = router;
