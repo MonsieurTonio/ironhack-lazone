@@ -5,7 +5,7 @@
 {{! Formulaire de recherche d'artistes dans l'API }}
 
 <form class="artist-form" action="/dashboard" method="GET">
-  <input class="type-artist-name" type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE">
+  <input class="type-artist-name" type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE" autocomplete="off">
   <button class="search-button" type="submit">Search</button>
 </form>
 
@@ -13,12 +13,13 @@
 {{! Résultats des artistes trouvés par rapport à la queryname }}
 
 
-<ul>
+<ul   style="list-style: none" class="searchbarResults";
+>
   {{#each artistsfound}}
   <li>
     <form action="/dashboard" method="POST">
       <input type="hidden" name="artistid" value={{id}}>
-      <button>{{name}}</button>
+      <button class="searchbarArtists" >{{name}}</button>
     </form>
   </li>
   {{/each}}
@@ -28,16 +29,8 @@
 
 {{! ----------- Artists que je follow déjà ----------- }}
 
-{{!-- <ul>
-  {{#each artistFollowed}}
-  {{>artistCards name="{{name}}"}}
-  {{else}}
-  <p>No artist yet!</p>
-  {{/each}}
-</ul> --}}
-
-
 <table>
+
   <thead>
     <tr>
       <th>Artist</th>
@@ -49,25 +42,30 @@
       </div>
     </tr>
   </thead>
+
+
   <tbody>
+    {{#each myartists}}
     <tr>
       <td>
         <div class="artist-column">
-          <div class="artist-pic-container "><img class="artist-pic" src="/images/default-avatar.png">
+          <div class="artist-pic-container "><img class="artist-pic" src="{{image}}">
           </div>
           <div class="artist-info-container">
-            <div class="artist-name">Drake</div>
-            <div class="genre-name">Hip Hop</div>
+            <div class="artist-name">{{artistName}}</div>
+            <div class="genre-name">{{genre}}</div>
           </div>
         </div>
       </td>
-      <td>127.978</td>
-      <td>51/100</td>
-      <td>1.256</td>
-      <td>456</td>
-      <td>23/100</td>
+      <td>{{datas.0.spotifyFlws}}</td>
+      <td>{{datas.0.spotifyPopularityScore}}/100</td>
+      <td>xx</td>
+      <td>xx</td>
+      <td>xx</td>
     </tr>
-    <tr>
+ {{/each}}
+
+    {{!-- <tr>
       <td>
         <div class="artist-column">
           <div class="artist-pic-container" ><img class="artist-pic" src="/images/default-avatar.png">
@@ -117,6 +115,6 @@
       <td>236</td>
       <td>32</td>
       <td>127/100</td>
-    </tr>
+    </tr> --}}
   </tbody>
 </table>

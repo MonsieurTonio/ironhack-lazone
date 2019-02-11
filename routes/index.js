@@ -9,8 +9,15 @@ const spotifyApi = require('spotify-web-api-node');
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index", {
-    logged: !!req.user
+  User.findById(req.user._id,function(err,user){
+    
+    if (err) return next(err);
+
+    console.log('user', user)
+
+    res.render('index', {
+      user: user
+    });
   });
 });
 
