@@ -26,8 +26,6 @@ spotifyApi.clientCredentialsGrant()
 
 
 router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  console.log('hey');
-
   User.findById(req.user._id) // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
     .catch(err => next(err))
     .then((user) => {
@@ -45,7 +43,7 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
           // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
           if (req.query.artist) {
             // console.log(artist)
-            spotifyApi.searchArtists(req.query.artist)
+            spotifyApi.searchArtists(req.query.artist, {limit:5})
               .catch(err => {
                 return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
               })

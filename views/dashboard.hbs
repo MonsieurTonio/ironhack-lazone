@@ -5,7 +5,7 @@
 {{! Formulaire de recherche d'artistes dans l'API }}
 
 <form class="artist-form" action="/dashboard" method="GET">
-  <input class="type-artist-name" type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE">
+  <input class="type-artist-name" type="text" name="artist" value="{{queryname}}" placeholder="TYPE ARTIST NAME HERE" autocomplete="off">
   <button class="search-button" type="submit">Search</button>
 </form>
 
@@ -13,12 +13,13 @@
 {{! Résultats des artistes trouvés par rapport à la queryname }}
 
 
-<ul>
+<ul   style="list-style: none" class="searchbarResults";
+>
   {{#each artistsfound}}
   <li>
     <form action="/dashboard" method="POST">
       <input type="hidden" name="artistid" value={{id}}>
-      <button>{{name}}</button>
+      <button class="searchbarArtists" >{{name}}</button>
     </form>
   </li>
   {{/each}}
