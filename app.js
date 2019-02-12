@@ -59,7 +59,10 @@ hbs.registerHelper('ifUndefined', (value, options) => {
       return options.fn(this);
   }
 });
-  
+
+
+hbs.registerPartials('/views/partials');
+hbs.registerPartials(__dirname + '/views/partials');
 
 // default value for title local
 app.locals.title = 'Zone.';

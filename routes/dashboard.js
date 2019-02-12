@@ -6,6 +6,7 @@ const ensureLogin = require("connect-ensure-login");
 const SpotifyWebApi = require('spotify-web-api-node');
 const document = require('../views')
 const Artist = require("../models/Artist")
+const hbs     = require('hbs');
 
 
 // Remember to insert your credentials here
@@ -97,10 +98,9 @@ router.post('/', (req, res, next) => {
                   console.log('Save artist successfully!');
                 }
               })
-              res.render('dashboard') //on envoie le dashboard pour répondre à la requête
+              res.render('dashboard', {newArtist}) //on envoie le dashboard pour répondre à la requête
             })
           }
-
         )
 
 
@@ -113,5 +113,7 @@ router.post('/', (req, res, next) => {
     })
 })
 
+
+hbs.registerPartials(__dirname + './views/partials')
 
 module.exports = router;

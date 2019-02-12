@@ -28,15 +28,29 @@
 
 {{! ----------- Artists que je follow déjà ----------- }}
 
-{{!-- <ul>
-  {{#each artistFollowed}}
-  {{>artistCards name="{{name}}"}}
-  {{else}}
-  <p>No artist yet!</p>
-  {{/each}}
-</ul> --}}
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th class="spotify-followers table-item">Spotify <br> followers</th>
+      <th class="spotify-popularity table-item">Spotify <br> popularity score</th>
+      <th class="spotify-listeners table-item">Listeners <br> last month</th>
+      <th class="deezer-followers table-item">Deezer <br> followers</th>
+      <th class="deezer-popularity table-item">Deezer <br> popularity score</th>
+      </div>
+    </tr>
+  </thead>
+</table>
+
+{{#each newArtist}}
+  {{>artistCards name="{{artistName}}" genre="{{genre}}" spotifyFlws="{{spotifyFlws}}" spotifyPopularityScore="{{spotifyPopularityScore}}"}}
+{{else}}
+<p>No artist yet!</p>
+{{/each}}
 
 
+{{!-- 
 <table>
   <thead>
     <tr>
@@ -119,4 +133,4 @@
       <td>127/100</td>
     </tr>
   </tbody>
-</table>
+</table> --}}

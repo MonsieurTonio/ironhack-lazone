@@ -6,14 +6,37 @@
 </li> --}}
 
 
-<ul>
-  {{!-- {{#each artistsFollowed}} --}}
-  <li class="artist-card-container">
-    <div>
-        <img src="">
-        <p>Drake</p>
-    </div>
 
-  <li>Jul</li>
-  {{!-- {{/each}} --}}
-</ul>
+{{!-- <table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th class="spotify-followers table-item">Spotify <br> followers</th>
+      <th class="spotify-popularity table-item">Spotify <br> popularity score</th>
+      <th class="spotify-listeners table-item">Listeners <br> last month</th>
+      <th class="deezer-followers table-item">Deezer <br> followers</th>
+      <th class="deezer-popularity table-item">Deezer <br> popularity score</th>
+      </div>
+    </tr>
+  </thead> --}}
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <div class="artist-column">
+          <div class="artist-pic-container "><img class="artist-pic" src="/images/default-avatar.png">
+          </div>
+          <div class="artist-info-container">
+            <div class="artist-name">{{this.name}}</div>
+            <div class="genre-name">{{this.genre}}</div>
+          </div>
+        </div>
+      </td>
+      <td>{{this.spotifyFlws}}</td>
+      <td>{{this.spotifyPopularityScore}}</td>
+      <td>1.256</td>
+      <td>456</td>
+      <td>23/100</td>
+    </tr>
+  </tbody>
+</table>
