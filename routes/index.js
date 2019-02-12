@@ -22,8 +22,7 @@ router.get("/", (req, res, next) => {
 });
 
 
-
-router.get('/profile', /* ensureLogin.ensureLoggedIn(), */ (req, res, next) => {
+router.get('/profile',  ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
     User.findById(req.user._id,function(err,user){
     
@@ -37,7 +36,7 @@ router.get('/profile', /* ensureLogin.ensureLoggedIn(), */ (req, res, next) => {
     })
 });
 
-router.post('/profile',/* ensureLogin.ensureLoggedIn() */ uploadCloud.single('photo'), (req, res, next) => {
+router.post('/profile', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
 
   User.findById(req.user._id,function(err,user){
     if (err) return next(err);
