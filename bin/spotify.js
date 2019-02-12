@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
@@ -23,21 +25,24 @@ const spotifyApi = new SpotifyWebApi({
 spotifyApi.clientCredentialsGrant()
     .then(data => {
         spotifyApi.setAccessToken(data.body.access_token);
-        console.log(data)
-        console.log("logé")
-        
+        // try for an artist
+        // spotifyApi.getArtist('3TVXtAsR1Inumwj472S9r4')
+        //     .then(data => {
+        //         console.log(data)
+        //     })
+        //     .catch(error => {
+        //         console.log('Something went wrong when retrieving an access token', error);
+        //     });
+
+        Artist.find().then(function (artists) {
+            artists.forEach(function (artist) {
+            updateArtist(artist.spotifyAccountId)//.then().catch()
+        })})
     })
     .catch(error => {
         console.log('Something went wrong when retrieving an access token', error);
     });
 
-spotifyApi.getArtist('5c6063bf60cfc173e06b6429')
-.then(data => {
-    console.log(data)
-})
-.catch(error => {
-    console.log('Something went wrong when retrieving an access token', error);
-});
 
 //   //On créé la fonction qui ajoute à un artiste les nouvelles data et retournant une promesse 
 function updateArtist(id) {
@@ -45,13 +50,11 @@ function updateArtist(id) {
             Artist.findOne({
                     spotifyAccountId: id
                 })
+                .catch(reject)
                 .then((artist) => {
                     //console.log(artist)
                     spotifyApi.getArtist(id) //on chope les données de l'artiste
-                        .catch(err => {
-                            console.log("test")
-                            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-                        })
+                        .catch(reject)
                         .then(data => {
                                 console.log("test2")
                                 artist.datas.push({
@@ -59,6 +62,8 @@ function updateArtist(id) {
                                     spotifyPopularityScore: data.body.popularity
                                 })
                                 artist.save()
+                                    .catch(reject)
+                                    .then(resolve);
                             }
 
 
@@ -67,8 +72,3 @@ function updateArtist(id) {
         })
     }
 
-
-Artist.find().then(function (artists) {
-    artists.forEach(function (artist) {
-        updateArtist(artist.spotifyAccountId);
-    })})
