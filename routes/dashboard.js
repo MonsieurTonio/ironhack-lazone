@@ -88,7 +88,7 @@ router.post('/', (req, res, next) => {
                 var newArtist = new Artist({
                   artistName: artist.body.name,
                   spotifyAccountId: artist.body.id,
-                  genre: artist.body.genres,
+                  genre: artist.body.genres[0],
                   album: artist.body.albums,
                   image: artist.body.images[0].url,
                   toptracks: [toptracks.body.tracks[0].name, toptracks.body.tracks[1].name, toptracks.body.tracks[2].name],
