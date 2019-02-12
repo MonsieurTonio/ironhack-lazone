@@ -11,10 +11,13 @@ const bcryptSalt = 10;
 
 
 // Nodmailer Transporter
+
 let transporter = nodemailer.createTransport({
-  host: 'localhost',
-  port: 1025,
-  ignoreTLS: true
+  service: 'Gmail',
+  auth: {
+    user: 'lazoneenpersonne75@gmail.com',
+    pass: 'nkpmbkpqthfnxiew' 
+  }
 });
 
 // LOGIN ROUTE

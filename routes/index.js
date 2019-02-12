@@ -1,4 +1,4 @@
-  const express = require('express');
+const express = require('express');
 const multer  = require('multer');
 const router  = express.Router();
 const uploadCloud = require('../config/cloudinary.js');
@@ -9,14 +9,21 @@ const spotifyApi = require('spotify-web-api-node');
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index", {
-    logged: !!req.user
+  User.findById(req.user._id,function(err,user){
+    
+    if (err) return next(err);
+
+    console.log('user', user)
+
+    res.render('index', {
+      user: user
+    });
   });
 });
 
 
 
-router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
+router.get('/profile', /* ensureLogin.ensureLoggedIn(), */ (req, res, next) => {
 
     User.findById(req.user._id,function(err,user){
     
@@ -30,7 +37,7 @@ router.get('/profile', /*ensureLogin.ensureLoggedIn(),*/ (req, res, next) => {
     })
 });
 
-router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('photo'), (req, res, next) => {
+router.post('/profile',/* ensureLogin.ensureLoggedIn() */ uploadCloud.single('photo'), (req, res, next) => {
 
   User.findById(req.user._id,function(err,user){
     if (err) return next(err);
@@ -39,25 +46,24 @@ router.post('/profile', /*ensureLogin.ensureLoggedIn(),*/ uploadCloud.single('ph
       user.avatarUrl = req.file.url;
     }
 
-    if (user.firstName){
+    if (req.body.firstName){
       user.firstName = req.body.firstName;
     }
-
-    if (user.lastName){
+    if (req.body.lastName){
       user.lastName = req.body.lastName;
     }
 
-    if (user.company){
+    if (req.body.company){
       user.company = req.body.company;
     }
 
-    if (user.email){
+    if (req.body.email){
       user.email = req.body.email;
-    }
+    } 
 
     user.save(function(err, user){
       if (err) return next(err);
-      res.render('profile');
+      res.render('profile', {user:user});
     });
 
 

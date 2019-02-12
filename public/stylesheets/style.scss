@@ -321,7 +321,6 @@ a:hover{
 .artist-form {
   margin-top: 3%;
   text-align: center;
-  padding-bottom: 3%;
 }
 
 .type-artist-name {
@@ -340,13 +339,20 @@ a:hover{
   font-size: 12px;
   text-transform: uppercase;
   color:  #FFFFFF;
+  padding-left: 1%;
 }
 
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder { 
   color: #FFFFFF;
+  opacity: 1; 
+  padding-left: 1%;
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color:  #FFFFFF;
   opacity: 1; /* Firefox */
-  padding-left: 5%;
+  padding-left: 0%;
 }
 
 .search-button {
@@ -373,6 +379,7 @@ a:hover{
 table { 
   width: 100%;
   border-collapse: collapse;
+  padding-top: 3%;
 }
 
 
@@ -453,13 +460,13 @@ td, th {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
   /* justify-content: flex-end; */
 }
 
 .artist-pic {
   width: 38.79px;
   border-radius: 100px;
-
 }
 
 .artist-info-container {
@@ -487,4 +494,41 @@ color: #FFFFFF;
   
   background: #747D88;
 }
+
+.searchbarArtists{
+  background: #474F5A;
+  border: none;
+  list-style: none;
+  text-align: left;
+  width:100%;
+  color: lightgrey;
+  opacity: 0.5;
+  border-radius: 20px;
+
+}
+
+.searchbarResults{
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 22px;
+  font-size: 14px;
+  color: lightgrey;
+  list-style: none;
+  width: 50%;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding-left:0px;
+  margin-left:14%;
+  border-radius: 20px;
+}
+
+.searchbarArtists:hover {
+  background:linear-gradient(90deg, #F27A54 0%, #A154F2 100%);
+  cursor:pointer;
+  opacity: 1;
+  color:white;
+}
+
+
 
