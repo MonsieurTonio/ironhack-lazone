@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
@@ -31,43 +33,51 @@ spotifyApi.clientCredentialsGrant()
     });
 
 
-//On créé la fonction qui ajoute à un artiste les nouvelles data et retournant une promesse 
+// Retrieve an access token
+spotifyApi.clientCredentialsGrant()
+    .then(data => {
+        spotifyApi.setAccessToken(data.body.access_token);
+        // try for an artist
+        // spotifyApi.getArtist('3TVXtAsR1Inumwj472S9r4')
+        //     .then(data => {
+        //         console.log(data)
+        //     })
+        //     .catch(error => {
+        //         console.log('Something went wrong when retrieving an access token', error);
+        //     });
+
+        Artist.find().then(function (artists) {
+            artists.forEach(function (artist) {
+            updateArtist(artist.spotifyAccountId)//.then().catch()
+        })})
+    })
+    .catch(error => {
+        console.log('Something went wrong when retrieving an access token', error);
+    });
+
+
+//   //On créé la fonction qui ajoute à un artiste les nouvelles data et retournant une promesse 
 function updateArtist(id) {
     return new Promise(function (resolve, reject) {
             Artist.findOne({
                     spotifyAccountId: id
                 })
+                .catch(reject)
                 .then((artist) => {
+                    //console.log(artist)
                     spotifyApi.getArtist(id) //on chope les données de l'artiste
-                        .catch(err => {
-                            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
-                        })
+                        .catch(reject)
                         .then(data => {
+                                console.log("test2")
                                 artist.datas.push({
                                     spotifyFlws: data.body.followers.total,
                                     spotifyPopularityScore: data.body.popularity
                                 })
                                 artist.save()
-                            }
-
-
-                        )
+                                    .catch(reject)
+                                    .then(resolve);
+                            })
                 });
         })
     }
 
-//on initialise notre tableau de promesses
-let promises = [];
-
-//on cherche tous les artistes de la base de donées. pour chaque artiste, 
-//on pousse dans le tableau de promesses la promesse de notre fonction updateArtist
-
-Artist.find().then(function (artists) {
-    artists.forEach(function (artist) {
-        promises.push(updateArtist(artist.spotifyAccountId));
-    })
-
-    Promise.all(promises).then(function () {
-        console.log("la base a été mise à jour")
-    })
-})
