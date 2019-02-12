@@ -1,4 +1,9 @@
-require('dotenv').config();
+const path = require('path').resolve(process.cwd()+'/..', '.env');
+console.log('path=', path);
+
+require('dotenv').config({
+    path: path
+});
 
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
@@ -7,10 +12,8 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const Artist = require("../models/Artist")
 
 mongoose
-    .connect("mongodb://localhost/ironhack-zone", {
-    //.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
-        useNewUrlParser: true
-    })
+    //.connect("mongodb://localhost/ironhack-zone", {
+    .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
     .then(x => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
@@ -20,8 +23,8 @@ mongoose
 
 // Remember to insert your credentials here
 const spotifyApi = new SpotifyWebApi({
-    clientId: "83758f322538420bbf9800da930019bd",
-    clientSecret: "25bda906bc4d43839df68d406b3e2324"
+    clientId: process.env.spotifyClientId,
+    clientSecret: process.env.spotifyClientSecret
 });
 
 // Retrieve an access token
@@ -38,15 +41,6 @@ spotifyApi.clientCredentialsGrant()
 spotifyApi.clientCredentialsGrant()
     .then(data => {
         spotifyApi.setAccessToken(data.body.access_token);
-        // try for an artist
-        // spotifyApi.getArtist('3TVXtAsR1Inumwj472S9r4')
-        //     .then(data => {
-        //         console.log(data)
-        //     })
-        //     .catch(error => {
-        //         console.log('Something went wrong when retrieving an access token', error);
-        //     });
-
         Artist.find().then(function (artists) {
             artists.forEach(function (artist) {
             updateArtist(artist.spotifyAccountId)//.then().catch()

@@ -62,7 +62,8 @@ router.post('/profile', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'
 
     user.save(function(err, user){
       if (err) return next(err);
-      res.render('profile', {user:user});
+      res.render('profile', 
+      {messageSave: 'You have successfully saved your changes', user:user});
     });
 
 

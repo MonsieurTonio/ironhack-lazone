@@ -138,7 +138,7 @@ router.post('/', (req, res, next) => {
             .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
             .then((artists) => {
               res.render('dashboard', {
-                message: 'You are already following this artist',
+                messageFollow: 'You are already following this artist',
                 myartists : artists
               })
             })
