@@ -36,34 +36,36 @@ router.get('/', ensureLogin.ensureLoggedIn(), (req, res, next) => {
       let dbartists = req.user.artistsFollowed
 
       Artist.find({
-        '_id': { $in: dbartists}
-    })
-    .catch(err => console.log('PAS RETROUVE TOUS LES ID'))
-    .then((artists) => {
-       // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
-      if (req.query.artist) {
-        // console.log(artist)
-        spotifyApi.searchArtists(req.query.artist)
-          .catch(err => {
-            return next(err); //Si erreur => on arrête tout et on veut afficher l'erreur
-          })
-          .then((data) => {
+          '_id': {
+            $in: dbartists
+          }
+        })
+        .catch(err => console.log('PAS RETROUVE TOUS LES ID'))
+        .then((artists) => {
+          // ---> On n'utilise pas le User.findById car il est déjà dans le req.user grâce au ensureLogin
+          if (req.query.artist) {
+            // console.log(artist)
+            spotifyApi.searchArtists(req.query.artist)
+              .catch(err => {
+                return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+              })
+              .then((data) => {
+                res.render('dashboard', {
+                  user: user,
+                  artistsfound: [data.body.artists.items[0], data.body.artists.items[1],data.body.artists.items[2],data.body.artists.items[3],data.body.artists.items[4]],
+                  queryname: req.query.artist,
+                  myartists: artists
+                });
+              });
+          } else {
+            // console.log(artists)
             res.render('dashboard', {
               user: user,
-              artistsfound: data.body.artists.items,
-              queryname: req.query.artist,
               myartists: artists
             });
-          });
-      } else {
-        // console.log(artists)
-        res.render('dashboard', {
-          user: user,
-          myartists: artists
+          }
         });
-      }
-    });
-})
+    })
 });
 
 
@@ -102,26 +104,30 @@ router.post('/', (req, res, next) => {
                       console.log('Save artist successfully!');
                     }
                   })
-                  User.findById(req.user._id,function(err,user){
+                  User.findById(req.user._id, function (err, user) {
                     if (err) return next(err);
                     user.artistsFollowed.push(newArtist._id)
                     console.log("artiste sauvé dans artist followed!")
                     user.save();
                   })
-                  res.render('dashboard') //on envoie le dashboard pour répondre à la requête
+                  
+                  res.render('dashboard', {
+                    user: user,
+                    myartists: artists
+                  }); //on envoie le dashboard pour répondre à la requête
                 })
             }
 
           )
-
-
       } else {
         res.render('dashboard', {
-          message: 'You are already following this artist'
+          message: 'You are already following this artist',
+          myartists: artists
         })
-
       }
     })
+
+    location.reload()
 
 })
 
