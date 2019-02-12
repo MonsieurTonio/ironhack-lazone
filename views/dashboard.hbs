@@ -58,8 +58,8 @@
           </div>
         </div>
       </td>
-      <td>{{format datas.0.spotifyFlws}}</td>
-      <td>{{datas.0.spotifyPopularityScore}}/100</td>
+      <td>{{#each datas}}{{#if @last}}{{format spotifyFlws}}{{/if}}{{/each}}</td>
+      <td>{{#each datas}}{{#if @last}}{{spotifyPopularityScore}}/100{{/if}}{{/each}}</td>
       <td>xx</td>
       <td>xx</td>
       <td>xx</td>
