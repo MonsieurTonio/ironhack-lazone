@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> {{title}} </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+
+
+
+
+  <canvas id="myChart" width="30%" height="12%" onchange="dateChange"></canvas>
+</body>
+
+<script type="text/javascript">
+
+
+const datasJson = {}
+datasJson.stringify = JSON.stringify(datasJson)
+
+  {{#each artist.datas }}
+   {{{ datasJson }}}
+  {{/each}}
+console.log(datasJson)
+
+
+  /* const datas = []
+
+  {{#each artist.datas }}
+    datas.push({{ spotifyFlws }})
+  {{/each}}
+    console.log(datas) */
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+<script src="/javascripts/artist-chart.js" charset="utf-8"></script>
+
+</html>

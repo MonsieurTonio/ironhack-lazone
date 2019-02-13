@@ -95,6 +95,9 @@ app.use('/', authRoutes);
 const dashboardRoutes = require('./routes/dashboard');
 app.use('/dashboard', dashboardRoutes);
 
+const artistDetailsRoutes = require('./routes/artist-details');
+app.use('/artist-details', artistDetailsRoutes);
+
 // const confirmationRoutes = require('./routes/confirmation');
 // app.use('/dashboard', confirmationRoutes);
 
