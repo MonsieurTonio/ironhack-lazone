@@ -54,6 +54,7 @@ spotifyApi.clientCredentialsGrant()
     })
     .catch(error => {
         console.log('Something went wrong when retrieving an access token', error);
+        process.exit(1);
     });
 
 
