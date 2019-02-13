@@ -8,9 +8,13 @@ const spotifyApi = require('spotify-web-api-node');
 
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+
+router.get('/', (req, res, next) => {
+  if(!req.user){
+    res.render('index') 
+} else {
   User.findById(req.user._id,function(err,user){
-    
+
     if (err) return next(err);
 
     console.log('user', user)
@@ -19,7 +23,7 @@ router.get("/", (req, res, next) => {
       user: user
     });
   });
-});
+}});
 
 
 router.get('/profile',  ensureLogin.ensureLoggedIn(), (req, res, next) => {

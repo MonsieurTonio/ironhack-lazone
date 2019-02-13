@@ -79,7 +79,7 @@ router.post('/', (req, res, next) => {
       if (!artist) {
         spotifyApi.getArtist(req.body.artistid) //on chope les données de l'artiste
           .catch(err => {
-            return next(err); //Si erreur => on arrêt tout et on veut afficher l'erreur
+            return next(err); //Si erreur => on arrête tout et on veut afficher l'erreur
           })
           .then(artist => {
             spotifyApi.getArtistTopTracks(req.body.artistid, 'FR') //on chope les top tracks
@@ -131,7 +131,8 @@ router.post('/', (req, res, next) => {
         User.findById(req.user._id, function (err, user) {
           if (err) return next(err);
           let artistsFollow = user.artistsFollowed
-          Artist.find({
+          if (artistsFollow.indexOf(artist._id) > -1){
+            Artist.find({
               '_id': {
                 $in: artistsFollow
               }
@@ -139,10 +140,28 @@ router.post('/', (req, res, next) => {
             .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
             .then((artists) => {
               res.render('dashboard', {
+                user : user,
                 messageFollow: 'You are already following this artist',
                 myartists : artists
               })
             })
+          } else{
+            user.artistsFollowed.push(artist._id)
+            user.save();
+                  let artistsFollow = user.artistsFollowed
+                  Artist.find({
+                      '_id': {
+                        $in: artistsFollow
+                      }
+                    })
+                    .catch(err => console.log('PAS RETROUVE TOUS LES ID DES ARTISTES DANS LA BASE USER'))
+                    .then((artists) => {
+                      res.render('dashboard', {
+                        user: user,
+                        myartists: artists
+                      });
+                    })
+          }
         })
       }
     })
