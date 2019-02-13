@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +13,41 @@
   <div class="homepage-container">
 
     <div>
-      <h2 class="homepage-title">Discover the upcoming <br> music talents.</h2>
+      <h2 class="homepage-title">Discover the upcoming
+        <br> music talents.</h2>
       <h3 class="homepage-text">Social and plateform data in one place.</h3>
     </div>
 
+    {{#if user}} 
+     <div class="createPosition">
+      <button class="createAccount">
+        <a class="createColor" href="/dashboard">Go to my dashboard</a>
+      </button>
+    </div>
+    {{else}}
     <div class="createPosition">
       <button class="createAccount">
         <a class="createColor" href="/signup">Create your account </a>
-      </button> 
+      </button>
     </div>
-    
+    {{/if}}
+
     <div class="bestArtist">
-      <h3> <strong class=" homepage-text trending">#TrendingNow</strong></h3>
-      <a href="/signup"><img src="/images/drake.jpeg"class="artistHomePage rounded-circle z-depth-0 drake " height="90"></a>
-      <a href="/signup"><img src="/images/beyonce.jpeg"class="artistHomePage rounded-circle z-depth-0 beyonce " height="90"></a>
-      <a href="/signup"><img src="/images/rihanna.jpeg"class="artistHomePage rounded-circle z-depth-0 rihanna " height="90"></a>
-      <a href="/signup"><img src="/images/brunomars.jpeg"class="artistHomePage rounded-circle z-depth-0 brunomars " height="90"></a>
+      <h3>
+        <strong class=" homepage-text trending">#TrendingNow</strong>
+      </h3>
+      <a href="/signup">
+        <img src="/images/drake.jpeg" class="artistHomePage rounded-circle z-depth-0 drake " height="90">
+      </a>
+      <a href="/signup">
+        <img src="/images/beyonce.jpeg" class="artistHomePage rounded-circle z-depth-0 beyonce " height="90">
+      </a>
+      <a href="/signup">
+        <img src="/images/rihanna.jpeg" class="artistHomePage rounded-circle z-depth-0 rihanna " height="90">
+      </a>
+      <a href="/signup">
+        <img src="/images/brunomars.jpeg" class="artistHomePage rounded-circle z-depth-0 brunomars " height="90">
+      </a>
     </div class="bestArtist">
 
   </div>
@@ -36,18 +56,19 @@
 
 <footer class="footerbar" style="background-color:#3C444C;">
 
-    <a class="navbar-brand" href="/">
-      <img src="/images/Zonelogo.png" width="168" height="57" class="footer-logo">
-    </a>
-    
-    <div class="footer-menu">
-      <div class="footer-text-style">
-        <a class="footer-link active" href="/dashboard">Home</a>
-        <a class="footer-link" href="/signup">Work</a>
-        <a class="footer-link" href="/">About</a>
-        <a class="footer-link" href="/">Contact</a>
-      </div>
-    </div>
+  <a href="/">
+    <img src="/images/Zonelogo.png" width="168" height="57" class="footer-logo">
+  </a>
 
-  </footer>
+  <div class="footer-menu">
+    <div class="footer-text-style">
+      <a class="footer-link active" href="/dashboard">Home</a>
+      <a class="footer-link" href="/signup">Work</a>
+      <a class="footer-link" href="/">About</a>
+      <a class="footer-link" href="/">Contact</a>
+    </div>
+  </div>
+
+</footer>
+
 </html>
