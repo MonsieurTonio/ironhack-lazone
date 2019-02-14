@@ -13,7 +13,7 @@ const Artist = require("../models/Artist")
 
 mongoose
     //.connect("mongodb://localhost/ironhack-zone", {
-    .connect("mongodb://localhost/ironhack-zone", {useNewUrlParser: true})
+    .connect("mongodb://heroku_c6jztdzz:j4higteb8nrlfp8k3lft9l8pd5@ds123465.mlab.com:23465/heroku_c6jztdzz", {useNewUrlParser: true})
     .then(x => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
