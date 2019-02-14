@@ -1,9 +1,9 @@
-const path = require('path').resolve(process.cwd()+'/..', '.env');
-console.log('path=', path);
+// // const path = require('path').resolve(process.cwd()+'/..', '.env');
+// console.log('path=', path);
 
-require('dotenv').config({
-    path: path
-});
+// require('dotenv').config({
+//     path: path
+// });
 
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
